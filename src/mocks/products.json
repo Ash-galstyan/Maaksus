@@ -1,0 +1,43 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "articleNumber": "PP-394",
+      "productName": "La flamand rose",
+      "artist": "Pablo Picasso",
+      "style": "Classic Modernism",
+      "availability": "In Stock",
+      "price": "50$",
+      "width": "50",
+      "height": "60",
+      "img": "../assets/images/product-1.jpg",
+      "artistDescription": "Pablo Picasso, born in Malaga in 1881 and died in Mougins, France, in 1973, developed a variety of styles and forms throughout his long career that gave decisive influence to 20th century art. Of importance are not only his painting, but also the graphic and sculptural work as well as the ceramics. In 1907, Picasso surprised the art world with analytical cubism, which depicts an object divided into its individual elements. With this new aesthetic, influenced by simple Iberian sculptures, he made a clear break between the art of the 19th and the 20th century."
+    },
+    {
+      "id": 1,
+      "articleNumber": "PP-552",
+      "productName": "Le pingouin",
+      "artist": "Pablo Picasso",
+      "style": "Classic Modernism",
+      "availability": "In Stock",
+      "price": "45$",
+      "width": "50",
+      "height": "60",
+      "img": "../assets/images/product-2.jpg",
+      "artistDescription": "Pablo Picasso, born in Malaga in 1881 and died in Mougins, France, in 1973, developed a variety of styles and forms throughout his long career that gave decisive influence to 20th century art. Of importance are not only his painting, but also the graphic and sculptural work as well as the ceramics. In 1907, Picasso surprised the art world with analytical cubism, which depicts an object divided into its individual elements. With this new aesthetic, influenced by simple Iberian sculptures, he made a clear break between the art of the 19th and the 20th century."
+    },
+    {
+      "id": 3,
+      "articleNumber": "PP-304",
+      "productName": "Le chien",
+      "artist": "Pablo Picasso",
+      "style": "Classic Modernism",
+      "availability": "In Stock",
+      "price": "48$",
+      "width": "60",
+      "height": "50",
+      "img": "../assets/images/product-3.jpg",
+      "artistDescription": "Pablo Picasso, born in Malaga in 1881 and died in Mougins, France, in 1973, developed a variety of styles and forms throughout his long career that gave decisive influence to 20th century art. Of importance are not only his painting, but also the graphic and sculptural work as well as the ceramics. In 1907, Picasso surprised the art world with analytical cubism, which depicts an object divided into its individual elements. With this new aesthetic, influenced by simple Iberian sculptures, he made a clear break between the art of the 19th and the 20th century."
+    }
+  ]
+}
