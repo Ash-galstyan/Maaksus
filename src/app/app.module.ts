@@ -18,6 +18,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BsDropdownModule, CarouselModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainCarouselComponent } from './fragments/main-carousel/main-carousel.component';
+import { TestimonyComponent } from './fragments/testimony/testimony.component';
+import { SWIPER_CONFIG, SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 
 @NgModule({
   declarations: [
@@ -31,7 +38,8 @@ import { MainCarouselComponent } from './fragments/main-carousel/main-carousel.c
     ContactComponent,
     SingleShopComponent,
     HeaderComponent,
-    MainCarouselComponent
+    MainCarouselComponent,
+    TestimonyComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +48,16 @@ import { MainCarouselComponent } from './fragments/main-carousel/main-carousel.c
     FontAwesomeModule,
     CarouselModule.forRoot(),
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    SwiperModule
   ],
-  providers: [ProductsService],
+  providers: [
+    ProductsService,
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
