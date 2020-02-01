@@ -1754,7 +1754,7 @@ form {
   background: url(assets/images/loader.gif) center no-repeat #fff;
 }
 
-.animate-box {
+::ng-deep .animate-box {
   .js & {
     opacity: 0;
   }
