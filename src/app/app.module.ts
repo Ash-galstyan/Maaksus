@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainCarouselComponent } from './fragments/main-carousel/main-carousel.component';
 import { TestimonyComponent } from './fragments/testimony/testimony.component';
 import { SWIPER_CONFIG, SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
+import { StatisticsComponent } from './fragments/statistics/statistics.component';
+import { NewsletterComponent } from './fragments/newsletter/newsletter.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -39,7 +41,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     SingleShopComponent,
     HeaderComponent,
     MainCarouselComponent,
-    TestimonyComponent
+    TestimonyComponent,
+    StatisticsComponent,
+    NewsletterComponent
   ],
   imports: [
     BrowserModule,

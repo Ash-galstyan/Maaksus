@@ -372,97 +372,6 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 
-
-#fh5co-hero {
-  min-height: 700px;
-  background: $brand-white url(assets/images/loader.gif) no-repeat center center;
-  .btn {
-    font-size: 24px;
-    &.btn-primary {
-      padding: 14px 30px!important;
-    }
-  }
-  .flexslider {
-    border: none;
-    z-index: 1;
-    margin-bottom: 0;
-
-    .slides {
-      position: relative;
-      overflow: hidden;
-      li {
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-        min-height: 700px;
-
-      }
-    }
-    .flex-control-nav {
-      bottom: 40px;
-      z-index: 1000;
-      li {
-        a {
-          background: rgba(255,255,255,.2);
-          box-shadow: none;
-          width: 12px;
-          height: 12px;
-          cursor: pointer;
-          &.flex-active {
-            cursor: pointer;
-            background: rgba(255,255,255,.7);
-          }
-        }
-      }
-    }
-    .flex-direction-nav {
-      display: none;
-    }
-    .slider-text {
-      display: table;
-      opacity: 0;
-      min-height: 700px;
-      > .slider-text-inner {
-        display: table-cell;
-        vertical-align: middle;
-        min-height: 700px;
-        h2 {
-          font-size: 24px;
-          font-weight: 400;
-          color: $brand-black;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          @media screen and (max-width: $screen-sm) {
-            font-size: 40px;
-          }
-        }
-        .desc{
-          background: rgba($brand-white,.9);
-          padding: 40px;
-          .price{
-            font-size: 14px;
-            letter-spacing: 3px;
-            display: block;
-            margin-bottom: 20px;
-          }
-        }
-        .btn{
-          font-size: 18px;
-        }
-
-        .fh5co-lead {
-          font-size: 20px;
-          color: $brand-white;
-          .icon-heart {
-            color: $brand-danger;
-          }
-        }
-      }
-    }
-  }
-}
-
-
 #fh5co-header,
 #fh5co-counter,
 .fh5co-bg {
@@ -871,7 +780,7 @@ form {
     text-align: center;
     margin: 0 auto 30px auto;
     @include border-radius(50%);
-    i {
+    .fa-icon {
       display: table-cell;
       vertical-align: middle;
       height: 90px;

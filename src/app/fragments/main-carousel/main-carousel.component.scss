@@ -1,0 +1,105 @@
+$brand-white: #fff;
+$brand-black: #000;
+$brand-danger: #d9534f !default;
+
+$screen-sm: 768px !default;
+
+slide {
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  min-height: 930px;
+}
+
+#fh5co-hero {
+  background: $brand-white url(../../../assets/images/loader.gif) no-repeat center center;
+  .btn {
+    font-size: 24px;
+    &.btn-primary {
+      padding: 14px 30px!important;
+    }
+  }
+  border: none;
+  z-index: 1;
+  margin-bottom: 0;
+
+  .slides {
+    position: relative;
+    overflow: hidden;
+    li {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      min-height: 700px;
+
+    }
+  }
+  .flex-control-nav {
+    bottom: 40px;
+    z-index: 1000;
+    li {
+      a {
+        background: rgba(255,255,255,.2);
+        box-shadow: none;
+        width: 12px;
+        height: 12px;
+        cursor: pointer;
+        &.flex-active {
+          cursor: pointer;
+          background: rgba(255,255,255,.7);
+        }
+      }
+    }
+  }
+  .flex-direction-nav {
+    display: none;
+  }
+  .slider-text {
+    display: table;
+    //opacity: 0;
+    min-height: 700px;
+    .slider-text-inner {
+      display: table-cell;
+      vertical-align: middle;
+      min-height: 700px;
+      h2 {
+        font-size: 24px;
+        font-weight: 400;
+        color: $brand-black;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        @media screen and (max-width: $screen-sm) {
+          font-size: 40px;
+        }
+      }
+      .desc{
+        background: rgba($brand-white,.9);
+        padding: 40px;
+        .price{
+          font-size: 14px;
+          letter-spacing: 3px;
+          display: block;
+          margin-bottom: 20px;
+        }
+      }
+      .btn{
+        font-size: 18px;
+      }
+
+      .fh5co-lead {
+        font-size: 20px;
+        color: $brand-white;
+        .icon-heart {
+          color: $brand-danger;
+        }
+      }
+    }
+  }
+}
+
+.carousel-caption {
+  color: #828282;
+  right: 0%;
+  left: 0%;
+  top: 15%;
+}
