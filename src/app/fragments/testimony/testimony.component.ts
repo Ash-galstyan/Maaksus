@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./testimony.component.scss']
 })
 export class TestimonyComponent implements OnInit {
-  config: any;
+  config = {
+    loop: true,
+    effect: 'fade',
+    fadeEffect: { crossFade: true }
+  };
 
   constructor() { }
 

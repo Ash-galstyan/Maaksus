@@ -4,7 +4,7 @@ $brand-danger: #d9534f !default;
 
 $screen-sm: 768px !default;
 
-slide {
+.slide {
   width: 100%;
   background-position: center;
   background-size: cover;
@@ -102,4 +102,54 @@ slide {
   right: 0%;
   left: 0%;
   top: 15%;
+}
+
+::ng-deep {
+  .swiper-pagination-handle .swiper-pagination-bullet {
+    background: #ffffff;
+    width: 12px;
+    height: 12px;
+  }
+
+  swiper > .swiper.s-wrapper .swiper-pagination .swiper-pagination-handle .swiper-pagination-bullet {
+    border: none !important;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0,40px,0)
+  }
+
+  to {
+    transform: translate3d(0,0,0);
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    transform: translate3d(0,40px,0)
+  }
+
+  to {
+    transform: translate3d(0,0,0);
+    opacity: 1
+  }
+}
+
+.slide.swiper-slide.swiper-slide-active .slider-text-inner {
+  animation: fadeInUp 2s;
+  -moz-animation: fadeInUp 2s; /* Firefox */
+  -webkit-animation: fadeInUp 2s; /* Safari and Chrome */
+  -o-animation: fadeInUp 2s; /* Opera */
+  animation-fill-mode: both;
+}
+
+.animated {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  opacity: 1;
 }

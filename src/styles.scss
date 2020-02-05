@@ -1668,3 +1668,24 @@ form {
     opacity: 0;
   }
 }
+
+.carousel-inner {
+  opacity: 1;
+}
+//
+.carousel-inner .item {
+  opacity: 0.4;
+  -webkit-transition: opacity 3s ease;
+  -moz-transition: opacity 3s ease;
+  -o-transition: opacity 3s ease;
+  transition: opacity 3s ease;
+}
+
+.carousel-inner .active {
+  opacity: 1;
+  width: 100%;
+  -webkit-transition: opacity 3s ease;
+  -moz-transition: opacity 3s ease;
+  -o-transition: opacity 3s ease;
+  transition: opacity 3s ease;
+}

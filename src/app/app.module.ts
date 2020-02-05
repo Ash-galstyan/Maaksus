@@ -22,6 +22,7 @@ import { TestimonyComponent } from './fragments/testimony/testimony.component';
 import { SWIPER_CONFIG, SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
 import { StatisticsComponent } from './fragments/statistics/statistics.component';
 import { NewsletterComponent } from './fragments/newsletter/newsletter.component';
+import { ServicesSummaryComponent } from './fragments/services-summary/services-summary.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -43,7 +44,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MainCarouselComponent,
     TestimonyComponent,
     StatisticsComponent,
-    NewsletterComponent
+    NewsletterComponent,
+    ServicesSummaryComponent
   ],
   imports: [
     BrowserModule,

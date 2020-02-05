@@ -8,6 +8,19 @@ import { ProductsService } from '../../core/products.service';
 })
 export class MainCarouselComponent implements OnInit {
   slides: any[] = [];
+  config = {
+    effect: 'fade',
+    speed: 1000,
+    pagination: {
+      type: 'bullets',
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    autoplay: {
+      delay: 5000,
+    },
+    fadeEffect: { crossFade: true }
+  };
 
   constructor(private productsService: ProductsService) { }
 
