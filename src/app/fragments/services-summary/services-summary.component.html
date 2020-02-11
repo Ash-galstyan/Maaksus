@@ -1,0 +1,36 @@
+<div id="fh5co-services" class="fh5co-bg-section">
+  <div class="container">
+    <div class="row" inViewport [inViewportOptions]="{ threshold: [0] }" (inViewportAction)="onIntersection($event)">
+      <div class="col-md-4 col-sm-4 text-center">
+        <div class="feature-center animate-box fadeIn" >
+						<span class="icon">
+							<fa-icon [icon]="faCreditCard" class="fa-icon"></fa-icon>
+						</span>
+          <h3>Credit Card</h3>
+          <p>We accept online payments. Pay with your Credit Card using our payments page for your convenience</p>
+          <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 text-center">
+        <div class="feature-center animate-box fadeIn" >
+						<span class="icon">
+							<fa-icon [icon]="faWallet" class="fa-icon"></fa-icon>
+						</span>
+          <h3>Save Money</h3>
+          <p>A great opportunity to stand out from the rest and save money with our high quality and reasonably priced products</p>
+          <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 text-center">
+        <div class="feature-center animate-box fadeIn" >
+						<span class="icon">
+							<fa-icon [icon]="faPaperPlane" class="fa-icon"></fa-icon>
+						</span>
+          <h3>Free Delivery</h3>
+          <p>Orders from Yerevan, Armenia will be shipped free of charge, just pay the price of the product and wait for your product to arrive</p>
+          <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

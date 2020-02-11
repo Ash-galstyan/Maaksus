@@ -8,7 +8,7 @@ import { NavigationComponent } from './fragments/navigation/navigation.component
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './fragments/footer/footer.component';
 import { ServicesPageComponent } from './services-page/services-page.component';
-import { ProductComponent } from './product/product.component';
+import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { SingleShopComponent } from './single-shop/single-shop.component';
 import { HeaderComponent } from './fragments/header/header.component';
@@ -20,6 +20,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainCarouselComponent } from './fragments/main-carousel/main-carousel.component';
 import { TestimonyComponent } from './fragments/testimony/testimony.component';
 import { SWIPER_CONFIG, SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
+import { StatisticsComponent } from './fragments/statistics/statistics.component';
+import { NewsletterComponent } from './fragments/newsletter/newsletter.component';
+import { ServicesSummaryComponent } from './fragments/services-summary/services-summary.component';
+import { InViewportModule } from 'ng-in-viewport';
+import { TestimoniesService } from './core/testimonies.service';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -34,12 +39,15 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     AboutComponent,
     FooterComponent,
     ServicesPageComponent,
-    ProductComponent,
+    ProductsComponent,
     ContactComponent,
     SingleShopComponent,
     HeaderComponent,
     MainCarouselComponent,
-    TestimonyComponent
+    TestimonyComponent,
+    StatisticsComponent,
+    NewsletterComponent,
+    ServicesSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -49,10 +57,12 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     CarouselModule.forRoot(),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    SwiperModule
+    SwiperModule,
+    InViewportModule
   ],
   providers: [
     ProductsService,
+    TestimoniesService,
     {
       provide: SWIPER_CONFIG,
       useValue: DEFAULT_SWIPER_CONFIG
