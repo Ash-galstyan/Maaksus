@@ -10,7 +10,7 @@ export class MainCarouselComponent implements OnInit {
   slides: any[] = [];
   config = {
     effect: 'fade',
-    speed: 1000,
+    speed: 1500,
     pagination: {
       type: 'bullets',
       el: '.swiper-pagination',

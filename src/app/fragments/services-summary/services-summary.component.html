@@ -1,8 +1,8 @@
 <div id="fh5co-services" class="fh5co-bg-section">
   <div class="container">
-    <div class="row">
+    <div class="row" inViewport [inViewportOptions]="{ threshold: [0] }" (inViewportAction)="onIntersection($event)">
       <div class="col-md-4 col-sm-4 text-center">
-        <div class="feature-center animate-box" data-animate-effect="fadeIn">
+        <div class="feature-center animate-box fadeIn" >
 						<span class="icon">
 							<fa-icon [icon]="faCreditCard" class="fa-icon"></fa-icon>
 						</span>
@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-4 text-center">
-        <div class="feature-center animate-box" data-animate-effect="fadeIn">
+        <div class="feature-center animate-box fadeIn" >
 						<span class="icon">
 							<fa-icon [icon]="faWallet" class="fa-icon"></fa-icon>
 						</span>
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-4 text-center">
-        <div class="feature-center animate-box" data-animate-effect="fadeIn">
+        <div class="feature-center animate-box fadeIn" >
 						<span class="icon">
 							<fa-icon [icon]="faPaperPlane" class="fa-icon"></fa-icon>
 						</span>

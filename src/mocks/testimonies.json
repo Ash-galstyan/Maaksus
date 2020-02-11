@@ -1,0 +1,25 @@
+{
+  "testimonies": [
+    {
+      "id": 0,
+      "clientName": "John Doe",
+      "reviewedVia": "TWITTER",
+      "review": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+      "clientImage": "../../../assets/images/person1.jpg"
+    },
+    {
+      "id": 1,
+      "clientName": "John Doe",
+      "reviewedVia": "TWITTER",
+      "review": "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+      "clientImage": "../../../assets/images/person2.jpg"
+    },
+    {
+      "id": 2,
+      "clientName": "John Doe",
+      "reviewedVia": "TWITTER",
+      "review": "Far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+      "clientImage": "../../../assets/images/person3.jpg"
+    }
+  ]
+}

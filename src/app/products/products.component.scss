@@ -44,6 +44,14 @@
 }
 
 .fadeIn {
+  animation: fadeIn ease-in-out 3s;
+  -webkit-animation: fadeIn ease-in-out 3s;
+  -moz-animation: fadeIn ease-in-out 3s;
+  -o-animation: fadeIn ease-in-out 3s;
+  -ms-animation: fadeIn ease-in-out 3s;
+}
+
+.section-title.fadeIn {
   animation: fadeIn ease-in-out 1s;
   -webkit-animation: fadeIn ease-in-out 1s;
   -moz-animation: fadeIn ease-in-out 1s;

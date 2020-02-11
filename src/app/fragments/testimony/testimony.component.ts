@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { TestimoniesService } from '../../core/testimonies.service';
 
 @Component({
   selector: 'app-testimony',
@@ -11,10 +12,19 @@ export class TestimonyComponent implements OnInit {
     effect: 'fade',
     fadeEffect: { crossFade: true }
   };
+  testimonies: any;
 
-  constructor() { }
+  constructor(private renderer: Renderer2, private testimoniesService: TestimoniesService) { }
 
   ngOnInit() {
+    this.testimoniesService.loadTestimonies().subscribe((testimonies: any) => {
+      this.testimonies = testimonies;
+    });
+  }
+
+  public onIntersection({ target, visible }: { target: Element; visible: boolean }): void {
+    this.renderer.addClass(target, visible ? 'fadeInUp' : 'notFadeIn');
+    this.renderer.removeClass(target, visible ? 'notFadeIn' : 'fadeInUp');
   }
 
 }

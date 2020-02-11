@@ -1,3 +1,45 @@
 .item {
   height: 270px;
 }
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0,40px,0)
+  }
+
+  to {
+    transform: translate3d(0,0,0);
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    transform: translate3d(0,40px,0)
+  }
+
+  to {
+    transform: translate3d(0,0,0);
+    opacity: 1
+  }
+}
+
+.animated {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  opacity: 1;
+}
+
+.animated.fadeInUp {
+  animation: fadeInUp 2s;
+  -moz-animation: fadeInUp 2s; /* Firefox */
+  -webkit-animation: fadeInUp 2s; /* Safari and Chrome */
+  -o-animation: fadeInUp 2s; /* Opera */
+  animation-fill-mode: both;
+}
+
+//::ng-deep #fh5co-testimonial swiper > .swiper.s-wrapper {
+//  height: 310px !important;
+//}
