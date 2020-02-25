@@ -1,5 +1,5 @@
 <app-navigation></app-navigation>
-<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(../../assets/images/img_bg_2.jpg);">
+<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(../../assets/images/img_bg_2.jpg);" >
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -7,7 +7,7 @@
         <div class="display-t">
           <div class="display-tc animate-box" data-animate-effect="fadeIn">
             <h1>About Us</h1>
-            <h2>Free html5 templates Made by <a href="http://freehtml5.co" target="_blank">freehtml5.co</a></h2>
+            <h2>Fine Art Prints for Your Interior</h2>
           </div>
         </div>
       </div>
@@ -17,36 +17,36 @@
 
 <div id="fh5co-about">
   <div class="container">
-    <div class="about-content">
+    <div class="about-content" inViewport [inViewportOptions]="{ threshold: [0] }" (inViewportAction)="onIntersection($event, 'fadeInUp')">
       <div class="row animate-box">
         <div class="col-md-6">
           <div class="desc">
             <h3>Company History</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quo est quis mollitia ratione magni assumenda repellat atque modi temporibus tempore ex. Dolore facilis ex sunt ea praesentium expedita numquam?</p>
-            <p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit eaque aspernatur expedita. Possimus itaque adipisci rem dolorem nesciunt perferendis quae amet deserunt eum labore quidem minima.</p>
+            <p>Maaksus was created in 2002 as a small family business and it's name is an acronym of the first letters of the family members at the time. Our founder's vision was that of creating an affordable store where our customers could buy the finest art prints for their interior designs both classical and modern, which would not cost a fortune for the customer.</p>
+            <p>Today that store can be reached from the comfort of your home or office. Order online and simply wait for our team to assemble all the pieces together and deliver a fresh and new atmosphere to your interior</p>
           </div>
           <div class="desc">
             <h3>Mission &amp; Vission</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quo est quis mollitia ratione magni assumenda repellat atque modi temporibus tempore ex. Dolore facilis ex sunt ea praesentium expedita numquam?</p>
-            <p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit eaque aspernatur expedita. Possimus itaque adipisci rem dolorem nesciunt perferendis quae amet deserunt eum labore quidem minima.</p>
+            <p>We believe that everyone should have the opportunity to admire the great works of art on their walls. Our products are affordable and very well built. The range and quality of the products can vary from simple posters to printings on canvas and high quality paper.</p>
+            <p>Visit our Products page, upload the image of your interior into our uploading tool and test your chosen product online.</p>
           </div>
         </div>
         <div class="col-md-6">
-          <img class="img-responsive" src="../../assets/images/img_bg_1.jpg" alt="about">
+          <img class="img-fluid" src="../../assets/images/img_bg_1.jpg" alt="about">
         </div>
       </div>
     </div>
     <div class="row animate-box">
-      <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+      <div class="col-md-8 offset-md-2 text-center fh5co-heading" inViewport [inViewportOptions]="{ threshold: [0] }" (inViewportAction)="onIntersection($event, 'fadeIn')">
         <span>Productive Staff</span>
         <h2>Meet Our Team</h2>
         <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
       </div>
     </div>
-    <div class="row">
+    <div class="row" inViewport [inViewportOptions]="{ threshold: [0] }" (inViewportAction)="onIntersection($event, 'fadeIn')">
       <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
         <div class="fh5co-staff">
-          <img src="images/person1.jpg" alt="Free HTML5 Templates by gettemplates.co">
+          <img src="../../assets/images/person1.jpg" alt="Free HTML5 Templates by gettemplates.co">
           <h3>Jean Smith</h3>
           <strong class="role">Chief Executive Officer</strong>
           <p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit eaque aspernatur expedita. Possimus itaque adipisci.</p>
@@ -60,7 +60,7 @@
       </div>
       <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
         <div class="fh5co-staff">
-          <img src="images/person2.jpg" alt="Free HTML5 Templates by gettemplates.co">
+          <img src="../../assets/images/person2.jpg" alt="Free HTML5 Templates by gettemplates.co">
           <h3>Hush Raven</h3>
           <strong class="role">Co-Owner</strong>
           <p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit eaque aspernatur expedita. Possimus itaque adipisci.</p>
@@ -74,7 +74,7 @@
       </div>
       <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
         <div class="fh5co-staff">
-          <img src="images/person3.jpg" alt="Free HTML5 Templates by gettemplates.co">
+          <img src="../../assets/images/person3.jpg" alt="Free HTML5 Templates by gettemplates.co">
           <h3>Alex King</h3>
           <strong class="role">Co-Owner</strong>
           <p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit eaque aspernatur expedita. Possimus itaque adipisci.</p>
@@ -93,13 +93,13 @@
 <div id="fh5co-started">
   <div class="container">
     <div class="row animate-box">
-      <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+      <div class="col-md-8 offset-md-2 text-center fh5co-heading">
         <h2>Newsletter</h2>
         <p>Just stay tune for our latest Product. Now you can subscribe</p>
       </div>
     </div>
     <div class="row animate-box">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-8 offset-md-2">
         <form class="form-inline">
           <div class="col-md-6 col-sm-6">
             <div class="form-group">
