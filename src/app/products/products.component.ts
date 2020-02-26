@@ -34,7 +34,7 @@ function myInlineMatcherFn(fromState: string, toState: string, element: any, par
 })
 
 export class ProductsComponent implements OnInit {
-  @ViewChild('productsTpl') productsTpl: TemplateRef<any>;
+  @ViewChild('productsTpl') productsTpl: ElementRef<any>;
   products: any[] = [];
   faShoppingCart = faShoppingCart;
   faEye = faEye;
@@ -66,7 +66,7 @@ export class ProductsComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
-    const componentPosition = this.productsTpl.nativeElement.parentNode.offsetTop - 360;
+    const componentPosition = this.productsTpl.nativeElement.offsetTop - 360;
     const scrollPosition = window.pageYOffset;
 
     if (scrollPosition >= componentPosition) {
