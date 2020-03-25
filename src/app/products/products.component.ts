@@ -50,8 +50,6 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
-    console.log(this.productsComponentIsInView);
-    console.log(this.productsTpl);
   }
 
   getProducts() {
@@ -71,7 +69,6 @@ export class ProductsComponent implements OnInit {
 
     if (scrollPosition >= componentPosition) {
       this.productsComponentIsInView = true;
-      console.log(this.productsComponentIsInView);
     }
   }
 }
