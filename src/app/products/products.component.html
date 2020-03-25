@@ -1,6 +1,6 @@
-<div id="fh5co-product">
+<div id="fh5co-product" #productsTpl>
   <div class="container">
-    <div class="row section-title animate-box" inViewport [inViewportOptions]="{ threshold: [0] }" (inViewportAction)="onIntersection($event)">
+    <div class="row section-title animate-box">
       <div class="col-12 col-md-8 offset-md-2 text-center fh5co-heading">
         <span>Cool Stuff</span>
         <h2>Products.</h2>
@@ -8,21 +8,22 @@
       </div>
     </div>
 
-    <div class="row" inViewport [inViewportOptions]="{ threshold: [0] }" (inViewportAction)="onIntersection($event)">
-      <div *ngFor="let product of products" class="col-12 col-md-4 text-center animate-box fadeIn">
-        <div class="product">
-          <div ></div>
-          <div class="product-grid" [ngStyle]="{ 'background-image': 'url(' + product.img + ')', width: '360px', height: '360px'}">
-            <div class="inner">
-              <p>
-                <a class="icon" (click)="addToCart()"><fa-icon [icon]="faShoppingCart"></fa-icon></a>
-                <a [routerLink]="['/single']" class="icon"><fa-icon [icon]="faEye"></fa-icon></a>
-              </p>
+    <div>
+      <div class="row" [@scrollAnimation]="products.length" *ngIf="productsComponentIsInView">
+        <div *ngFor="let product of products" class="col-12 col-md-4 text-center animate-box fadeIn">
+          <div class="product">
+            <div class="product-grid" [ngStyle]="{ 'background-image': 'url(' + product.img + ')', width: '360px', height: '360px'}">
+              <div class="inner">
+                <p>
+                  <a class="icon" (click)="addToCart()"><fa-icon [icon]="faShoppingCart"></fa-icon></a>
+                  <a [routerLink]="['/single']" class="icon"><fa-icon [icon]="faEye"></fa-icon></a>
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="desc">
-            <h3><a href="single.html">{{product.productName}}</a></h3>
-            <span class="price">{{product.price}}</span>
+            <div class="desc">
+              <h3><a href="single.html">{{product.productName}}</a></h3>
+              <span class="price">{{product.price}}</span>
+            </div>
           </div>
         </div>
       </div>

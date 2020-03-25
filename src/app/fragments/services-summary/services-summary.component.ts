@@ -2,11 +2,20 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { faWallet } from '@fortawesome/free-solid-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-services-summary',
   templateUrl: './services-summary.component.html',
-  styleUrls: ['./services-summary.component.scss']
+  styleUrls: ['./services-summary.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: '0' }),
+        animate('4s ease-out', style({ opacity: '1' })),
+      ])
+    ])
+  ]
 })
 export class ServicesSummaryComponent implements OnInit {
   faWallet = faWallet;
