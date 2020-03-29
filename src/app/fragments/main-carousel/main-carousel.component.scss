@@ -4,11 +4,15 @@ $brand-danger: #d9534f !default;
 
 $screen-sm: 768px !default;
 
-.slide {
-  width: 100%;
-  background-position: center;
-  background-size: cover;
-  min-height: 930px;
+
+.swiper-wrapper {
+  //min-height: 800px;
+  .slide {
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
 
 #fh5co-hero {
@@ -143,6 +147,13 @@ $screen-sm: 768px !default;
   -webkit-animation: fadeInUp 2s; /* Safari and Chrome */
   -o-animation: fadeInUp 2s; /* Opera */
   animation-fill-mode: both;
+}
+
+::ng-deep swiper > .swiper.s-wrapper .swiper-wrapper .swiper-slide {
+  overflow: hidden !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .animated {

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsService } from './products.service';
+import { ProductsService } from './services/products.service';
+import {ProductsResolver} from './resolvers/products.resolver';
 
 @NgModule({
   declarations: [],
@@ -13,7 +14,8 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        ProductsService
+        ProductsService,
+        ProductsResolver
       ],
     };
   }

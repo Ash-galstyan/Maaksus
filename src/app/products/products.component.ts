@@ -1,14 +1,9 @@
-import { Component, ElementRef, HostListener, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
-import { ProductsService } from '../core/products.service';
+import {Component, ElementRef, HostListener, Input, OnInit, Renderer2, TemplateRef, ViewChild} from '@angular/core';
+import { ProductsService } from '../core/services/products.service';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { animate, stagger, style, transition, trigger, query, keyframes } from '@angular/animations';
-
-function myInlineMatcherFn(fromState: string, toState: string, element: any, params: {[key:
-    string]: any}): boolean {
-  // notice that `element` and `params` are also available here
-  return toState == 'show';
-}
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -35,21 +30,24 @@ function myInlineMatcherFn(fromState: string, toState: string, element: any, par
 
 export class ProductsComponent implements OnInit {
   @ViewChild('productsTpl') productsTpl: ElementRef<any>;
+  @Input() isInSeparatePage = true;
+
   products: any[] = [];
+  resolverData: any = this.isInSeparatePage ? this.activatedRoute.snapshot.data : undefined;
   faShoppingCart = faShoppingCart;
   faEye = faEye;
   productsComponentIsInView = false;
-  toState = 'hide';
-  productsLength: number;
 
   constructor(
     private productsService: ProductsService,
-    private renderer: Renderer2,
-    public el: ElementRef
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.productsComponentIsInView = this.isInSeparatePage;
     this.getProducts();
+    console.log(this.resolverData);
   }
 
   getProducts() {
@@ -62,13 +60,23 @@ export class ProductsComponent implements OnInit {
     console.log('Added to cart');
   }
 
+  goToProductDetailPage(product) {
+    this.router.navigate(['./products/detail/', product.id], {
+      queryParams: {
+        productId: product.id
+      }
+    });
+  }
+
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
-    const componentPosition = this.productsTpl.nativeElement.offsetTop - 360;
-    const scrollPosition = window.pageYOffset;
+    if (!this.isInSeparatePage) {
+      const componentPosition = this.productsTpl.nativeElement.offsetTop - 360;
+      const scrollPosition = window.pageYOffset;
 
-    if (scrollPosition >= componentPosition) {
-      this.productsComponentIsInView = true;
+      if (scrollPosition >= componentPosition) {
+        this.productsComponentIsInView = true;
+      }
     }
   }
 }

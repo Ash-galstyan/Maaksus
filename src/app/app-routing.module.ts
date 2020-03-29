@@ -5,7 +5,8 @@ import { AboutComponent } from './about/about.component';
 import { ServicesPageComponent } from './services-page/services-page.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
-import { SingleShopComponent } from './single-shop/single-shop.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import {ProductsResolver} from './core/resolvers/products.resolver';
 
 const routes: Routes = [
   {
@@ -14,11 +15,25 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductsComponent
-  },
-  {
-    path: 'single',
-    component: SingleShopComponent
+    data: {
+      name: 'Products'
+    },
+    resolve: {
+      products: ProductsResolver
+    },
+    children: [
+      {
+        path: '',
+        component: ProductsComponent
+      },
+      {
+        path: 'detail/:productId',
+        component: ProductDetailsComponent,
+        data: {
+          name: 'Product Details'
+        }
+      }
+    ]
   },
   {
     path: 'about',
