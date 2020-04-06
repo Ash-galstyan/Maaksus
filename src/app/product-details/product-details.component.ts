@@ -19,14 +19,14 @@ export class ProductDetailsComponent implements OnInit {
       el: '.swiper-pagination',
       clickable: true
     },
-    autoplay: {
-      delay: 5000,
-    },
-    fadeEffect: {crossFade: true},
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
-    }
+    },
+    autoplay: {
+      delay: 5000,
+    },
+    fadeEffect: {crossFade: true}
   };
   slides: any[] = [];
 

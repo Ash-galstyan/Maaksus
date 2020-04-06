@@ -15,7 +15,7 @@ import { HeaderComponent } from './fragments/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './core/services/products.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BsDropdownModule, CarouselModule } from 'ngx-bootstrap';
+import { BsDropdownModule, CarouselModule, TabsModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainCarouselComponent } from './fragments/main-carousel/main-carousel.component';
 import { TestimonyComponent } from './fragments/testimony/testimony.component';
@@ -59,7 +59,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     SwiperModule,
-    InViewportModule
+    InViewportModule,
+    TabsModule.forRoot()
   ],
   providers: [
     ProductsService,

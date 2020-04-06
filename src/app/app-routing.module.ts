@@ -15,11 +15,11 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    data: {
-      name: 'Products'
-    },
     resolve: {
       products: ProductsResolver
+    },
+    data: {
+      name: 'Products'
     },
     children: [
       {
