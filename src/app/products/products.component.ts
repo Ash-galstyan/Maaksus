@@ -47,7 +47,6 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.productsComponentIsInView = this.isInSeparatePage;
     this.getProducts();
-    console.log(this.resolverData);
   }
 
   getProducts() {

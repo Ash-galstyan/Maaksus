@@ -1,0 +1,12 @@
+<div class="preview-image-wrapper">
+  <div class="default-preview">
+    <div class="preview-background" [ngStyle]="{'background-image': 'url(' + uploadedImageUrl + ')'}"></div>
+    <img class="preview-foreground" [src]="productPreviewUrl">
+  </div>
+  <div class="uploaded-preview">
+    <label class="custom-file-upload btn btn-primary">
+      <input type="file" (change)="onSelectFile($event)">
+      Upload Image
+    </label>
+  </div>
+</div>

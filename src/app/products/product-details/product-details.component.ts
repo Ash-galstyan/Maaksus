@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ProductsService} from '../core/services/products.service';
+import {ProductsService} from '../../core/services/products.service';
 import {ActivatedRoute} from '@angular/router';
+import {TabDirective} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-product-details',
@@ -28,7 +29,8 @@ export class ProductDetailsComponent implements OnInit {
     },
     fadeEffect: {crossFade: true}
   };
-  slides: any[] = [];
+  isProductDetailsVisible = true;
+  frameStyle: string;
 
   constructor(private productsService: ProductsService, private activatedRoute: ActivatedRoute) {
   }
@@ -42,6 +44,15 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
     this.product = this.getProductDetails[0];
     this.subTitle = this.product.productName;
+    this.frameStyle = '#000000';
+  }
+
+  toggleProductDetailsVisibility(data: TabDirective) {
+    return this.isProductDetailsVisible = data.heading !== 'Choose Frames';
+  }
+
+  onFrameSelected(frameStyle: any) {
+    this.frameStyle = frameStyle;
   }
 
 }

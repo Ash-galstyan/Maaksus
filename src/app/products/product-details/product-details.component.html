@@ -8,29 +8,25 @@
             <!-- Tabs -->
             <div class="fh5co-tab-content-wrap">
               <tabset>
-                <tab>
-                  <ng-template tabHeading>
-                    <a class="fh5co-tab-nav">Product Details</a>
-                  </ng-template>
+                <tab heading="Product Details" class="fh5co-tab-nav" (selectTab)="toggleProductDetailsVisibility($event)">
                   <swiper [config]="config" [index]="0">
-                    <div class="slide" *ngFor="let slide of product.detailImages; let i = index" [ngStyle]="{ 'background-image': 'url(' + slide + ')'}">
+                    <div class="slide" *ngFor="let slide of product.detailImages;"
+                         [ngStyle]="{ 'background-image': 'url(' + slide + ')'}">
                     </div>
                     <div class="swiper-pagination"></div>
                     <div class="swiper-button-next swiper-button-white"></div>
                     <div class="swiper-button-prev swiper-button-white"></div>
                   </swiper>
                 </tab>
-                <tab>
-                  <ng-template tabHeading>
-                    <span class="fh5co-tab-nav">Upload Your Own Interior</span>
-                  </ng-template>
-                  I've got an HTML heading. Pretty cool!
+                <tab heading="Upload Your Own Interior" class="fh5co-tab-nav" (selectTab)="toggleProductDetailsVisibility($event)">
+                  <app-file-uploader [productPreviewUrl]="product.img"></app-file-uploader>
                 </tab>
-                <tab>
-                  <ng-template tabHeading>
-                    <span class="fh5co-tab-nav">Choose Frames</span>
-                  </ng-template>
-                  Tab with html tags in heading
+                <tab heading="Choose Frames" class="fh5co-tab-nav" (selectTab)="toggleProductDetailsVisibility($event)">
+                  <div class="frame-preview-wrapper d-flex align-items-center justify-content-center">
+                    <div class="frame" [ngStyle]="{'border': '10px solid' + frameStyle}">
+                      <img [src]="product.img">
+                    </div>
+                  </div>
                 </tab>
               </tabset>
             </div>
@@ -45,8 +41,13 @@
               <div class="product-information fh5co-heading tab-content">
                 <h2>{{product.productName}}</h2>
                 <span class="price">{{product.price}}</span>
-                <p>{{product.artist}}</p>
-                <p>{{product.artistDescription}}</p>
+                <div *ngIf="isProductDetailsVisible">
+                  <p>{{product.artist}}</p>
+                  <p>{{product.artistDescription}}</p>
+                </div>
+              </div>
+              <div class="frames-wrapper" *ngIf="!isProductDetailsVisible">
+                <app-frames (selectFrame)="onFrameSelected($event)"></app-frames>
               </div>
             </div>
           </div>

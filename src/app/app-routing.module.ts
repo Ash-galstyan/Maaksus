@@ -5,7 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { ServicesPageComponent } from './services-page/services-page.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import {ProductsResolver} from './core/resolvers/products.resolver';
 
 const routes: Routes = [

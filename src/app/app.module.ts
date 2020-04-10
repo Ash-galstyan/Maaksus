@@ -10,7 +10,7 @@ import { FooterComponent } from './fragments/footer/footer.component';
 import { ServicesPageComponent } from './services-page/services-page.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { HeaderComponent } from './fragments/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './core/services/products.service';
@@ -26,6 +26,10 @@ import { ServicesSummaryComponent } from './fragments/services-summary/services-
 import { InViewportModule } from 'ng-in-viewport';
 import { TestimoniesService } from './core/services/testimonies.service';
 import { ProductsResolver } from './core/resolvers/products.resolver';
+import { FileUploaderComponent } from './ui/file-uploader/file-uploader.component';
+import { CoreModule } from './core/core.module';
+import {ImageService} from './core/services/image.service';
+import { FramesComponent } from './ui/frames/frames.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -48,13 +52,16 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     TestimonyComponent,
     StatisticsComponent,
     NewsletterComponent,
-    ServicesSummaryComponent
+    ServicesSummaryComponent,
+    FileUploaderComponent,
+    FramesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+    // CoreModule.forRoot(),
     CarouselModule.forRoot(),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
@@ -66,6 +73,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ProductsService,
     TestimoniesService,
     ProductsResolver,
+    ImageService,
+    // CoreModule,
     {
       provide: SWIPER_CONFIG,
       useValue: DEFAULT_SWIPER_CONFIG

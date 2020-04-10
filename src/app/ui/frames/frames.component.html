@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 frames" *ngFor="let frame of frames">
+      <div class="frame-color" [ngStyle]="{'background-color': frame.color}" (click)="selectFrame.emit(frame.color)"></div>
+      <span class="frame-name d-block">{{frame.name}}</span>
+      <span class="frame-price d-block">{{frame.price}}</span>
+    </div>
+  </div>
+</div>
+<div class="frames-container"></div>
