@@ -744,11 +744,18 @@ form {
 #fh5co-started,
 #fh5co-testimonial,
 #fh5co-started,
-#fh5co-product,
 #fh5co-about,
 #fh5co-contact,
-#fh5co-footer{
+#fh5co-footer {
   padding: 7em 0;
+  clear: both;
+  @media screen and (max-width: $screen-sm) {
+    padding: 3em 0;
+  }
+}
+
+#fh5co-product {
+  padding: 4em 0;
   clear: both;
   @media screen and (max-width: $screen-sm) {
     padding: 3em 0;
@@ -894,53 +901,29 @@ form {
 
 .fh5co-tabs {
   .fh5co-tab-nav {
-    clear: both;
-    margin: 0 0 3em 0;
-    padding: 3px;
-    float: left;
-    width: 100%;
-    background: lighten($brand-black, 95%);
-    @include border-radius(4px);
-    li {
+    a {
+      padding: 20px;
+      width: 100%;
       float: left;
-      margin: 0;
-      padding: 0;
-      width: 33.33%;
-      text-align: center;
-      list-style: none;
-      @include inline-block;
-      .icon {
-        font-size: 30px;
+      @include border-radius(4px);
+      color: lighten($brand-black, 70%);
+      &:hover {
+        color: lighten($brand-black, 30%);
       }
+    }
+    &.active {
       a {
-        padding: 20px;
-        width: 100%;
-        float: left;
-        @include border-radius(4px);
-        color: lighten($brand-black, 70%);
-        &:hover {
-          color: lighten($brand-black, 30%);
-        }
-      }
-      &.active {
-        a {
-          background: $brand-white;
-          color: $brand-primary;
-        }
+        background: $brand-white;
+        color: $brand-primary;
       }
     }
   }
   .fh5co-tab-content-wrap {
-    clear: both;
-    position: relative;
-    top: 70px;
     .tab-content {
-      position: absolute;
+      //position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      opacity: 0;
-      visibility: hidden;
       &.active {
         opacity: 1;
         visibility: visible;
@@ -957,19 +940,6 @@ form {
       padding: 0;
       margin: 0;
       margin-bottom: 3em;
-      li{
-        list-style: none;
-        margin-bottom: 20px;
-        position: relative;
-        padding-left: 30px;
-        &:before{
-          font-family: 'icomoon';
-          position: absolute;
-          top: 0;
-          left: 0;
-          content: '\e116';
-        }
-      }
     }
     .feed{
       width: 100%;
@@ -1501,7 +1471,7 @@ form {
     padding: 8px 20px!important;
   }
   &.btn-lg {
-    padding: 18px 36px!important;
+    padding: 15px 20px !important;
   }
   &:hover, &:active, &:focus {
     box-shadow: none!important;

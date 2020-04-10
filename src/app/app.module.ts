@@ -10,12 +10,12 @@ import { FooterComponent } from './fragments/footer/footer.component';
 import { ServicesPageComponent } from './services-page/services-page.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
-import { SingleShopComponent } from './single-shop/single-shop.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { HeaderComponent } from './fragments/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductsService } from './core/products.service';
+import { ProductsService } from './core/services/products.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BsDropdownModule, CarouselModule } from 'ngx-bootstrap';
+import { BsDropdownModule, CarouselModule, TabsModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainCarouselComponent } from './fragments/main-carousel/main-carousel.component';
 import { TestimonyComponent } from './fragments/testimony/testimony.component';
@@ -24,7 +24,12 @@ import { StatisticsComponent } from './fragments/statistics/statistics.component
 import { NewsletterComponent } from './fragments/newsletter/newsletter.component';
 import { ServicesSummaryComponent } from './fragments/services-summary/services-summary.component';
 import { InViewportModule } from 'ng-in-viewport';
-import { TestimoniesService } from './core/testimonies.service';
+import { TestimoniesService } from './core/services/testimonies.service';
+import { ProductsResolver } from './core/resolvers/products.resolver';
+import { FileUploaderComponent } from './ui/file-uploader/file-uploader.component';
+import { CoreModule } from './core/core.module';
+import {ImageService} from './core/services/image.service';
+import { FramesComponent } from './ui/frames/frames.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -41,28 +46,35 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ServicesPageComponent,
     ProductsComponent,
     ContactComponent,
-    SingleShopComponent,
+    ProductDetailsComponent,
     HeaderComponent,
     MainCarouselComponent,
     TestimonyComponent,
     StatisticsComponent,
     NewsletterComponent,
-    ServicesSummaryComponent
+    ServicesSummaryComponent,
+    FileUploaderComponent,
+    FramesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+    // CoreModule.forRoot(),
     CarouselModule.forRoot(),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     SwiperModule,
-    InViewportModule
+    InViewportModule,
+    TabsModule.forRoot()
   ],
   providers: [
     ProductsService,
     TestimoniesService,
+    ProductsResolver,
+    ImageService,
+    // CoreModule,
     {
       provide: SWIPER_CONFIG,
       useValue: DEFAULT_SWIPER_CONFIG

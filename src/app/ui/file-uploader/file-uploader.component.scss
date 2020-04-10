@@ -1,0 +1,57 @@
+.preview-image-wrapper {
+  position: relative;
+  .default-preview {
+    position: relative;
+    .preview-foreground {
+      position: absolute;
+      top: 28px;
+      width: 25%;
+      height: auto;
+      left: 38%;
+      border: 4px solid #000000;
+    }
+
+    .preview-background {
+      width: 100%;
+      height: 500px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 1;
+      transition: .5s ease;
+      backface-visibility: hidden;
+    }
+  }
+
+  .uploaded-preview {
+    position: absolute;
+    top: 65%;
+    left: 51%;
+    transition: .5s ease;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &:hover {
+    .uploaded-preview {
+      opacity: 1;
+    }
+
+    .preview-background {
+      opacity: 0.5 !important;
+    }
+
+    .preview-foreground {
+      opacity: 0.5;
+      transition: .5s ease;
+      backface-visibility: hidden;
+    }
+  }
+}
+
+input[type="file"] {
+  display: none;
+}

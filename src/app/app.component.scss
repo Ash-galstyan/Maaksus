@@ -1,0 +1,13 @@
+::ng-deep {
+  .pages-wrapper {
+    margin-top: 69px;
+  }
+
+  .swiper-button-next {
+    background-image: url("../assets/images/right_arrow.png") !important;
+  }
+
+  .swiper-button-prev {
+    background-image: url("../assets/images/left_arrow.png") !important;
+  }
+}
