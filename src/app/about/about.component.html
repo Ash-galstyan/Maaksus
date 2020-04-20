@@ -17,7 +17,8 @@
 
   <div id="fh5co-about">
     <div class="container">
-      <div class="about-content" inViewport [inViewportOptions]="{ threshold: [0] }" (inViewportAction)="onIntersection($event, 'fadeInUp')">
+      <div class="about-content" inViewport [inViewportOptions]="{ threshold: [0] }"
+           (inViewportAction)="onIntersection($event, 'fadeInUp')">
         <div class="row animate-box">
           <div class="col-md-6">
             <div class="desc">

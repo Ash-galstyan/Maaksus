@@ -6,7 +6,8 @@ import { ServicesPageComponent } from './services-page/services-page.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
-import {ProductsResolver} from './core/resolvers/products.resolver';
+import { ProductsResolver } from './core/resolvers/products.resolver';
+import { ShippingPageComponent } from './shipping-page/shipping-page.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'shipping',
+    component: ShippingPageComponent
   }
 ];
 

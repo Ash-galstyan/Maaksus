@@ -16,7 +16,7 @@
               <div class="product-grid" [ngStyle]="{ 'background-image': 'url(' + product.img + ')', width: '360px', height: '360px'}">
                 <div class="inner">
                   <p>
-                    <a class="icon" (click)="addToCart()"><fa-icon [icon]="faShoppingCart"></fa-icon></a>
+                    <a class="icon" (click)="addToCart(product)"><fa-icon [icon]="faShoppingCart"></fa-icon></a>
                     <a (click)="goToProductDetailPage(product)" class="icon"><fa-icon [icon]="faEye"></fa-icon></a>
                   </p>
                 </div>

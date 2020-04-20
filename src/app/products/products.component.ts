@@ -1,9 +1,12 @@
-import {Component, ElementRef, HostListener, Input, OnInit, Renderer2, TemplateRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { ProductsService } from '../core/services/products.service';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { animate, stagger, style, transition, trigger, query, keyframes } from '@angular/animations';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from '../core/services/cart.service';
+import { CartComponent } from '../core/components/cart/cart.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-products',
@@ -31,17 +34,21 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ProductsComponent implements OnInit {
   @ViewChild('productsTpl') productsTpl: ElementRef<any>;
   @Input() isInSeparatePage = true;
+  @Output() productAdded = new EventEmitter();
 
   products: any[] = [];
   resolverData: any = this.isInSeparatePage ? this.activatedRoute.snapshot.data : undefined;
   faShoppingCart = faShoppingCart;
   faEye = faEye;
   productsComponentIsInView = false;
+  bsModalRef: BsModalRef;
 
   constructor(
     private productsService: ProductsService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit() {
@@ -55,8 +62,11 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  addToCart() {
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
     console.log('Added to cart');
+    this.bsModalRef = this.modalService.show(CartComponent);
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 
   goToProductDetailPage(product) {

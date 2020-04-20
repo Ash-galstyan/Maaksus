@@ -36,8 +36,9 @@
         <div class="col-12 col-md-4">
           <div class="fh5co-tabs">
             <div class="fh5co-tab-content-wrap">
-              <button class="btn btn-primary btn-outline btn-lg">Add to Cart</button>
+              <button class="btn btn-primary btn-outline btn-lg" (click)="addToCart(product)">Add to Cart</button>
               <button class="btn btn-primary btn-outline btn-lg">Purchase Now</button>
+
               <div class="product-information fh5co-heading tab-content">
                 <h2>{{product.productName}}</h2>
                 <span class="price">{{product.price}}</span>
@@ -46,6 +47,7 @@
                   <p>{{product.artistDescription}}</p>
                 </div>
               </div>
+
               <div class="frames-wrapper" *ngIf="!isProductDetailsVisible">
                 <app-frames (selectFrame)="onFrameSelected($event)"></app-frames>
               </div>

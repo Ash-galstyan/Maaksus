@@ -1,43 +1,53 @@
-<div id="fh5co-counter" class="fh5co-bg fh5co-counter d-flex align-items-center" style="background-image:url(../../../assets/images/img_bg_5.jpg);">
+<div id="fh5co-counter" class="fh5co-bg fh5co-counter d-flex align-items-center"
+     style="background-image:url(../../../assets/images/img_bg_5.jpg);" inViewport [inViewportOptions]="{ threshold: [0] }"
+     (inViewportAction)="onIntersection($event)">
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-6 animate-box">
         <div class="feature-center">
           <span class="icon">
-            <i class="icon-eye"></i>
+            <fa-icon [icon]="faEye" class="fa-icon"></fa-icon>
           </span>
 
-          <span class="counter js-counter" data-from="0" data-to="22070" data-speed="5000" data-refresh-interval="50">22070</span>
-          <span class="counter-label">Creativity Fuel</span>
+          <span class="counter js-counter" data-from="0" data-to="22070" data-speed="5000" data-refresh-interval="50">
+            <app-counter [end]="positiveFeedbacks">%</app-counter>
+          </span>
+          <span class="counter-label">Positive Feedbacks</span>
 
         </div>
       </div>
       <div class="col-md-3 col-sm-6 animate-box">
         <div class="feature-center">
           <span class="icon">
-            <i class="icon-shopping-cart"></i>
+            <fa-icon [icon]="faShoppingCart" class="fa-icon"></fa-icon>
           </span>
 
-          <span class="counter js-counter" data-from="0" data-to="450" data-speed="5000" data-refresh-interval="50">450</span>
+          <span class="counter js-counter" data-from="0" data-to="450" data-speed="5000" data-refresh-interval="50">
+            <app-counter [end]="happyClients"></app-counter>
+          </span>
           <span class="counter-label">Happy Clients</span>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 animate-box">
         <div class="feature-center">
           <span class="icon">
-            <i class="icon-shop"></i>
+            <fa-icon [icon]="faImage" class="fa-icon"></fa-icon>
           </span>
-          <span class="counter js-counter" data-from="0" data-to="700" data-speed="5000" data-refresh-interval="50">700</span>
-          <span class="counter-label">All Products</span>
+          <span class="counter js-counter" data-from="0" data-to="700" data-speed="5000" data-refresh-interval="50">
+            <app-counter [end]="productsSold"></app-counter>
+          </span>
+          <span class="counter-label">Products Sold</span>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 animate-box">
         <div class="feature-center">
           <span class="icon">
-            <i class="icon-clock"></i>
+            <fa-icon [icon]="faHourglass" class="fa-icon"></fa-icon>
           </span>
 
-          <span class="counter js-counter" data-from="0" data-to="5605" data-speed="5000" data-refresh-interval="50">5605</span>
+          <span class="counter js-counter" data-from="0" data-to="5605" data-speed="5000" data-refresh-interval="50">
+            <app-counter [end]="hoursSpent"></app-counter>
+          </span>
           <span class="counter-label">Hours Spent</span>
 
         </div>

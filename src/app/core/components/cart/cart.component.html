@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h4 class="modal-title">Shopping Cart ({{calcTotal()}})</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="cart-products-wrapper">
+    <div *ngIf="products.length > 0">
+      <div class="cart-products row" *ngFor="let product of products">
+        <div class="col-6"><img [src]="product.img"></div>
+        <div class="col-6">
+          <h5>{{product.productName}}</h5>
+          <input type="number" [(ngModel)]="product.num" min="0"/>
+          <h6>{{product.artist}}</h6>
+          <span>{{product.price}}</span>
+        </div>
+      </div>
+    </div>
+    <h4 *ngIf="products.length === 0">No Added Products</h4>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+</div>
