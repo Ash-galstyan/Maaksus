@@ -2,57 +2,62 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap';
 import { Product } from '../../models/product.model';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 
 @Injectable()
 export class CartService {
   @Output() productAdded = new EventEmitter();
   items: any[] = [];
+  public totalItems = 0;
 
   private readonly cartItemChanges: BehaviorSubject<Product[]>;
-
-  cartItems(): Observable<any> {
-    const items = new BehaviorSubject([]);
-    items.next(this.items);
-    return items;
-  }
+  private readonly itemsQuantityChanges: BehaviorSubject<number>;
 
   constructor(
     private http: HttpClient,
     private modalService: BsModalService
   ) {
     this.cartItemChanges = new BehaviorSubject<Product[]>([]);
+    this.itemsQuantityChanges = new BehaviorSubject(null);
   }
 
-  addToCart(product: any): Observable<any> {
-    const productExistInCart = this.items.find(({name}) => name === product.productName);
-    if (!productExistInCart) {
-      this.items.push({...product, num: 1}); // enhance "porduct" opject with "num" property
-      this.cartItemChanges.next(this.items);
-      return;
+  addToCart(product: any, quantity: string) {
+    let itemRemoved = false;
+    const productExistInCart = this.items.find((item, index) => {
+      if (item.id === product.id) {
+        if (quantity === 'increment') {
+          item.quantity += 1;
+        } else {
+          if (item.quantity > 1) {
+            item.quantity -= 1;
+          } else {
+            itemRemoved = true;
+          }
+        }
+      }
+      if (!itemRemoved) {
+        return item.id === product.id;
+      } else {
+        this.items.splice(index, 1);
+        return item;
+      }
+    });
+    if (!productExistInCart && !itemRemoved) {
+      this.items.push({...product, quantity: 1}); // enhance "porduct" opject with "num" property
     }
-    productExistInCart.num += 1;
+    this.totalItems = 0;
+    this.items.forEach(item => {
+      this.totalItems += item.quantity;
+    });
   }
 
   getItems() {
     return this.items;
   }
 
-  getCartItemChanges() {
-    return this.cartItemChanges.pipe(
-      map(items => items.filter((o: Product) => {
-        return o;
-      }))
-    );
-  }
-
   clearCart() {
     this.items = [];
+    this.totalItems = 0;
     return this.items;
   }
-
-  // removeFromCart() {
-  //   return this.http.get('http://localhost:3000/mainCarouselProducts');
-  // }
 }

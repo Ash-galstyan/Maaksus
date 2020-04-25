@@ -18,12 +18,12 @@ export class NavigationComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private modalService: BsModalService,
-    private cartService: CartService
+    public cartService: CartService
   ) {
   }
 
   ngOnInit() {
-    this.subscribeToCartChanges();
+
   }
 
   openCartModal() {
@@ -31,15 +31,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 
-  subscribeToCartChanges() {
-    return this.cartService.getCartItemChanges().subscribe(item => {
-      this.itemsInCart = item.length;
-    });
-  }
-
   ngOnDestroy() {
     // prevent memory leak when component is destroyed
-    this.subscribeToCartChanges().unsubscribe();
+    // this.subscribeToCartChanges().unsubscribe();
   }
 
 }

@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">Shopping Cart ({{calcTotal()}})</h4>
+  <h4 class="modal-title">Shopping Cart ({{cartService.totalItems}})</h4>
   <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -11,7 +11,15 @@
         <div class="col-6"><img [src]="product.img"></div>
         <div class="col-6">
           <h5>{{product.productName}}</h5>
-          <input type="number" [(ngModel)]="product.num" min="0"/>
+          <span class="item-quantity">{{product.quantity}}</span>
+          <div class="quantity-icons-wrapper">
+            <a class="plus" href="javascript:void(0)"><fa-icon [icon]="faPlusCircle" class="fa-icon"
+                                                               (click)="changeProductQuantity(product, 'add')"></fa-icon></a>
+            <a class="minus" href="javascript:void(0)"><fa-icon [icon]="faMinusCircle" class="fa-icon"
+                                                                (click)="changeProductQuantity(product, 'remove')"></fa-icon></a>
+          </div>
+<!--          <input type="number" [(ngModel)]="product.quantity" (ngModelChange)="itemQuantityChanges$.next($event)"-->
+<!--                 (change)="changeProductQuantity(product)" min="0"/>-->
           <h6>{{product.artist}}</h6>
           <span>{{product.price}}</span>
         </div>
@@ -22,4 +30,5 @@
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+  <button type="button" class="btn btn-default" (click)="clearCart()">Clear Cart</button>
 </div>

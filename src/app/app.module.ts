@@ -27,6 +27,7 @@ import { FileUploaderComponent } from './ui/file-uploader/file-uploader.componen
 import { CoreModule } from './core/core.module';
 import { FramesComponent } from './ui/frames/frames.component';
 import { ShippingPageComponent } from './shipping-page/shipping-page.component';
+import { ToastrModule } from 'ngx-toastr';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -66,7 +67,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     SwiperModule,
     InViewportModule,
     TabsModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center'
+    })
   ],
   providers: [
     {

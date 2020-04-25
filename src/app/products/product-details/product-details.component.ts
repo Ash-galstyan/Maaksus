@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import { ProductsService } from '../../core/services/products.service';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService, TabDirective } from 'ngx-bootstrap';
-import { CartComponent } from '../../core/components/cart/cart.component';
 import { CartService } from '../../core/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-details',
@@ -39,7 +38,8 @@ export class ProductDetailsComponent implements OnInit {
     private productsService: ProductsService,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private toastService: ToastrService
   ) {
   }
 
@@ -64,10 +64,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    this.cartService.addToCart(product);
+    this.cartService.addToCart(product, 'increment');
+    this.toastService.success('Product added to cart');
     console.log('Added to cart');
-    this.bsModalRef = this.modalService.show(CartComponent);
-    this.bsModalRef.content.closeBtnName = 'Close';
   }
 
 }

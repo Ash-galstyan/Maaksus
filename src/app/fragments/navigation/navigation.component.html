@@ -36,8 +36,10 @@
 						      </span>
             </div>
           </li>
-          <li class="shopping-cart"><a href="javascript:void(0)" class="cart" (click)="openCartModal()"><span><small>{{itemsInCart}}</small>
-            <fa-icon [icon]="faShoppingCart" class="fa-icon"></fa-icon></span></a>
+          <li class="shopping-cart"><a href="javascript:void(0)" class="cart" (click)="openCartModal()">
+            <span><small>{{cartService.totalItems}}</small>
+                <fa-icon [icon]="faShoppingCart" class="fa-icon"></fa-icon>
+              </span></a>
           </li>
         </ul>
       </div>

@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ProductsService } from '../core/services/products.service';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../core/services/cart.service';
 import { CartComponent } from '../core/components/cart/cart.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products',
@@ -48,7 +49,8 @@ export class ProductsComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private toastService: ToastrService
   ) { }
 
   ngOnInit() {
@@ -63,10 +65,9 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    this.cartService.addToCart(product);
+    this.cartService.addToCart(product, 'increment');
+    this.toastService.success('Product added to cart');
     console.log('Added to cart');
-    this.bsModalRef = this.modalService.show(CartComponent);
-    this.bsModalRef.content.closeBtnName = 'Close';
   }
 
   goToProductDetailPage(product) {

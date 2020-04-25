@@ -8,6 +8,8 @@ import { CartService } from './services/cart.service';
 import { TestimoniesService } from './services/testimonies.service';
 import { CartComponent } from './components/cart/cart.component';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { NumberValueAccessorDirective } from './directives/number-value-accessor';
 
 @NgModule({
   declarations: [CounterComponent, CartComponent],
@@ -16,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   exports: [CounterComponent]
 })

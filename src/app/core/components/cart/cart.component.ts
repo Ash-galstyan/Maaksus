@@ -1,6 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
 import { CartService } from '../../services/cart.service';
+import { combineLatest, merge, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cart',
@@ -8,17 +11,11 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  @Output() productAdded = new EventEmitter();
   @Output() productRemoved = new EventEmitter();
   products = [];
   closeBtnName: string;
-  calcTotal() {
-    return this.products.reduce((acc, prod) => acc += prod.num , 0);
-  }
-
-  removeProduct(product) {
-    this.productRemoved.emit(product);
-  }
+  faPlusCircle = faPlusCircle;
+  faMinusCircle = faMinusCircle;
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -28,6 +25,23 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.cartService.getItems();
+  }
+
+  removeProduct(product) {
+    this.productRemoved.emit(product);
+  }
+
+  changeProductQuantity(product, action: string) {
+    product.quantity = product.quantity ? product.quantity : 1;
+    if (action === 'add') {
+      this.cartService.addToCart(product, 'increment');
+    } else {
+      this.cartService.addToCart(product, 'decrement');
+    }
+  }
+
+  clearCart() {
+    this.products = this.cartService.clearCart();
   }
 
 }

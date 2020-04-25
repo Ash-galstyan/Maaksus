@@ -3,4 +3,25 @@
     width: 100px;
     height: auto;
   }
+  .item-quantity {
+    display: inline-block;
+    border: 1px solid #828282;
+    width: 30%;
+    text-align: center;
+  }
+  .quantity-icons-wrapper {
+    display: inline-block;
+    width: 70%;
+    position: relative;
+    a {
+      position: absolute;
+      right: 15px;
+    }
+    .plus {
+      bottom: 0;
+    }
+    .minus {
+      top: -5px;
+    }
+  }
 }
