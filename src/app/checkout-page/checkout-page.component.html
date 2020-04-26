@@ -1,0 +1,62 @@
+<div class="pages-wrapper pt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-9 form-group">
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+          <div>
+            <label for="firstName">
+              First Name
+            </label>
+            <input id="firstName" type="text" formControlName="firstName" class="form-control">
+          </div>
+
+          <div>
+            <label for="lastName">
+              Last Name
+            </label>
+            <input id="lastName" type="text" formControlName="lastName" class="form-control">
+          </div>
+
+          <div>
+            <label for="address">
+              Address
+            </label>
+            <input id="address" type="text" formControlName="address" class="form-control">
+          </div>
+
+          <div>
+            <label for="city">
+              City
+            </label>
+            <input id="city" type="text" formControlName="city" class="form-control">
+          </div>
+
+          <div>
+            <label for="postalCode">
+              Postal Code
+            </label>
+            <input id="postalCode" type="number" formControlName="postalCode" class="form-control">
+          </div>
+
+          <div>
+            <label for="phone">
+              Phone
+            </label>
+            <input id="phone" type="number" formControlName="phone" class="form-control">
+          </div>
+
+          <div>
+            <label for="email">
+              Email
+            </label>
+            <input id="email" type="text" formControlName="email" class="form-control">
+          </div>
+
+          <button class="btn btn-primary mt-4" type="submit">Purchase</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

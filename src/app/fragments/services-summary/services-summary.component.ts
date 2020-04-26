@@ -1,7 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { faWallet } from '@fortawesome/free-solid-svg-icons';
-import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({

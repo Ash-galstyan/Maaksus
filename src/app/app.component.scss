@@ -10,4 +10,15 @@
   .swiper-button-prev {
     background-image: url("../assets/images/left_arrow.png") !important;
   }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
 }

@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {ProductsService} from '../../core/services/products.service';
-import {ActivatedRoute} from '@angular/router';
-import {TabDirective} from 'ngx-bootstrap';
+import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../core/services/products.service';
+import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService, TabDirective } from 'ngx-bootstrap';
+import { CartService } from '../../core/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-details',
@@ -14,6 +15,7 @@ export class ProductDetailsComponent implements OnInit {
   subTitle: string;
   productId: number = this.activatedRoute.snapshot.params['productId'];
   product: any;
+  bsModalRef: BsModalRef;
   config = {
     pagination: {
       type: 'fraction',
@@ -32,7 +34,13 @@ export class ProductDetailsComponent implements OnInit {
   isProductDetailsVisible = true;
   frameStyle: string;
 
-  constructor(private productsService: ProductsService, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private productsService: ProductsService,
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService,
+    private modalService: BsModalService,
+    private toastService: ToastrService
+  ) {
   }
 
   get getProductDetails() {
@@ -53,6 +61,12 @@ export class ProductDetailsComponent implements OnInit {
 
   onFrameSelected(frameStyle: any) {
     this.frameStyle = frameStyle;
+  }
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product, 'increment');
+    this.toastService.success('Product added to cart');
+    console.log('Added to cart');
   }
 
 }

@@ -790,7 +790,7 @@ form {
     .fa-icon {
       display: table-cell;
       vertical-align: middle;
-      height: 90px;
+      height: 50px;
       font-size: 40px;
       line-height: 40px;
       color: $brand-white;
@@ -849,6 +849,7 @@ form {
           padding: 7px 10px;
           color: $brand-white;
           background: $brand-primary;
+          cursor: pointer;
           &:hover,&:focus{
             color: $brand-primary;
             background: $brand-white;

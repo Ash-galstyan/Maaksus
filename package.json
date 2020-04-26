@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.2.0",
-    "@angular/cdk": "^9.0.0",
+    "@angular/cdk": "7.2.0",
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
     "@angular/core": "~7.2.0",
@@ -30,6 +30,7 @@
     "ng-in-viewport": "^6.0.3",
     "ngx-bootstrap": "^5.2.0",
     "ngx-swiper-wrapper": "^8.0.2",
+    "ngx-toastr": "^8.8.0",
     "node-modules": "^1.0.1",
     "remove-node-modules": "^1.7.6",
     "rm-rf": "^2.0.1",

@@ -13,9 +13,8 @@ import { ContactComponent } from './contact/contact.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { HeaderComponent } from './fragments/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductsService } from './core/services/products.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BsDropdownModule, CarouselModule, TabsModule } from 'ngx-bootstrap';
+import { BsDropdownModule, CarouselModule, ModalModule, TabsModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainCarouselComponent } from './fragments/main-carousel/main-carousel.component';
 import { TestimonyComponent } from './fragments/testimony/testimony.component';
@@ -24,12 +23,12 @@ import { StatisticsComponent } from './fragments/statistics/statistics.component
 import { NewsletterComponent } from './fragments/newsletter/newsletter.component';
 import { ServicesSummaryComponent } from './fragments/services-summary/services-summary.component';
 import { InViewportModule } from 'ng-in-viewport';
-import { TestimoniesService } from './core/services/testimonies.service';
-import { ProductsResolver } from './core/resolvers/products.resolver';
 import { FileUploaderComponent } from './ui/file-uploader/file-uploader.component';
 import { CoreModule } from './core/core.module';
-import {ImageService} from './core/services/image.service';
 import { FramesComponent } from './ui/frames/frames.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -54,27 +53,28 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     NewsletterComponent,
     ServicesSummaryComponent,
     FileUploaderComponent,
-    FramesComponent
+    FramesComponent,
+    CheckoutPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
-    // CoreModule.forRoot(),
+    CoreModule.forRoot(),
     CarouselModule.forRoot(),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     SwiperModule,
     InViewportModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ModalModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center'
+    }),
+    ReactiveFormsModule
   ],
   providers: [
-    ProductsService,
-    TestimoniesService,
-    ProductsResolver,
-    ImageService,
-    // CoreModule,
     {
       provide: SWIPER_CONFIG,
       useValue: DEFAULT_SWIPER_CONFIG
