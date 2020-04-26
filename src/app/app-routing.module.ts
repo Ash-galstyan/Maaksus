@@ -7,7 +7,7 @@ import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { ProductsResolver } from './core/resolvers/products.resolver';
-import { ShippingPageComponent } from './shipping-page/shipping-page.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 
 const routes: Routes = [
   {
@@ -49,8 +49,8 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
-    path: 'shipping',
-    component: ShippingPageComponent
+    path: 'checkout',
+    component: CheckoutPageComponent
   }
 ];
 

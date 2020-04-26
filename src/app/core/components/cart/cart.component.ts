@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
 import { CartService } from '../../services/cart.service';
-import { combineLatest, merge, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -19,16 +19,13 @@ export class CartComponent implements OnInit {
 
   constructor(
     public bsModalRef: BsModalRef,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
     ) {
   }
 
   ngOnInit() {
     this.products = this.cartService.getItems();
-  }
-
-  removeProduct(product) {
-    this.productRemoved.emit(product);
   }
 
   changeProductQuantity(product, action: string) {
@@ -38,6 +35,26 @@ export class CartComponent implements OnInit {
     } else {
       this.cartService.addToCart(product, 'decrement');
     }
+  }
+
+  proceedToCheckout(products: any[]) {
+    this.bsModalRef.hide();
+    const productIds = [];
+    let price = 0;
+    let quantity = 0;
+    products.forEach(product => {
+      products.push(product.id);
+      price += +product.price;
+      quantity += +product.quantity;
+    });
+    console.log('Go to checkout form');
+    this.router.navigate(['checkout'], {
+      queryParams: {
+        productIds,
+        price,
+        quantity
+      }
+    });
   }
 
   clearCart() {

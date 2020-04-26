@@ -26,8 +26,9 @@ import { InViewportModule } from 'ng-in-viewport';
 import { FileUploaderComponent } from './ui/file-uploader/file-uploader.component';
 import { CoreModule } from './core/core.module';
 import { FramesComponent } from './ui/frames/frames.component';
-import { ShippingPageComponent } from './shipping-page/shipping-page.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -53,7 +54,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ServicesSummaryComponent,
     FileUploaderComponent,
     FramesComponent,
-    ShippingPageComponent
+    CheckoutPageComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +71,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ModalModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-top-center'
-    })
+    }),
+    ReactiveFormsModule
   ],
   providers: [
     {

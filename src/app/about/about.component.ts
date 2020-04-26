@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-about',
@@ -6,8 +7,13 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  checkoutForm;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private formBuilder: FormBuilder) {
+    this.checkoutForm = this.formBuilder.group({
+      email: ''
+    });
+  }
 
   ngOnInit() {
   }
@@ -20,6 +26,13 @@ export class AboutComponent implements OnInit {
       this.renderer.addClass(target, visible ? 'fadeInUp' : 'notFadeIn');
       this.renderer.removeClass(target, visible ? 'notFadeIn' : 'fadeInUp');
     }
+  }
+
+  onSubmit(customerData) {
+    // Process checkout data here
+    this.checkoutForm.reset();
+
+    console.warn('Your order has been submitted', customerData);
   }
 
 }

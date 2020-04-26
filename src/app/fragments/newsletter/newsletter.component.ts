@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-newsletter',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./newsletter.component.scss']
 })
 export class NewsletterComponent implements OnInit {
+  newsLetterForm;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {
+    this.newsLetterForm = this.formBuilder.group({
+      email: ''
+    });
+  }
 
   ngOnInit() {
+  }
+
+  onSubmit(customerData) {
+    // Process checkout data here
+    this.newsLetterForm.reset();
+
+    console.warn('Subscribed', customerData);
   }
 
 }
