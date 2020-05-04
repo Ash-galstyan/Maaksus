@@ -189,16 +189,23 @@ h1, h2, h3, h4, h5, h6, figure {
     text-transform: uppercase;
     font-weight: bold;
     font-family: $font-primary;
+    img {
+      width: 150px;
+      height: auto;
+    }
   }
-  a {
+  .navbar-nav {
+    width: 100%;
+  }
+  a.nat-item {
     padding: 5px 10px;
     color: $brand-black;
   }
-  .menu-1, .menu-2 {
-    @media screen and (max-width: $screen-sm ) {
-      display: none;
-    }
-  }
+  //.menu-1, .menu-2 {
+  //  @media screen and (max-width: $screen-sm ) {
+  //    display: none;
+  //  }
+  //}
   .menu-2{
     li{
       &.search{
@@ -271,11 +278,10 @@ h1, h2, h3, h4, h5, h6, figure {
       padding: 0;
       margin: 0;
       list-style: none;
-      display: inline-block;
       font-family: $font-primary;
-      a {
+      a.nav-link {
         font-size: 13px;
-        padding: 30px 10px;
+        padding: 20px 10px;
         text-transform: uppercase;
         color: rgba(0,0,0,.5);
         @include transition(.5s);
@@ -302,20 +308,22 @@ h1, h2, h3, h4, h5, h6, figure {
       }
       &.has-dropdown {
         position: relative;
-        .dropdown {
-          width: 150px;
+        .dropdown-item {
+          min-width: 150px;
+          max-width: 200px;
           -webkit-box-shadow: 0px 14px 33px -9px rgba(0,0,0,0.75);
           -moz-box-shadow: 0px 14px 33px -9px rgba(0,0,0,0.75);
           box-shadow: 0px 14px 33px -9px rgba(0,0,0,0.75);
           z-index: 1002;
-          visibility: hidden;
-          opacity: 0;
-          position: absolute;
-          top: 40px;
+          //visibility: hidden;
+          //opacity: 0;
+          //position: absolute;
+          //top: 40px;
           left: 0;
           text-align: left;
           background: $brand-black;
-          padding: 20px;
+          padding: 10px;
+          margin-bottom: 3px;
           @include border-radius(4px);
           @include transition(.0s);
           &:before {
@@ -332,30 +340,28 @@ h1, h2, h3, h4, h5, h6, figure {
             margin-left: -8px;
           }
 
+          a {
+            padding: 2px 0;
+            display: block;
+            color: lighten($brand-black, 60%);
+            line-height: 1.2;
+            text-transform: none;
+            font-size: 15px;
+            &:hover {
+              color: $brand-white;
+            }
+          }
           li {
             display: block;
             margin-bottom: 7px;
             &:last-child {
               margin-bottom: 0;
             }
-            a {
-              padding: 2px 0;
-              display: block;
-              color: lighten($brand-black, 60%);
-              line-height: 1.2;
-              text-transform: none;
-              font-size: 15px;
-              &:hover {
-                color: $brand-white;
-              }
-            }
           }
         }
         &:hover, &:focus {
-          a {
-            color: $brand-black;
-          }
           .dropdown {
+            opacity: 1;
           }
         }
       }

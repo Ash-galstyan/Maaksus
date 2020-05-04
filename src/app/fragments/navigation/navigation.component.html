@@ -1,49 +1,92 @@
 <!--<div class="fh5co-loader"></div>-->
-<nav class="fh5co-nav fixed-top" role="navigation">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-xs-2">
-        <div id="fh5co-logo"><a href="index.html">MAAKSUS</a></div>
-      </div>
-      <div class="col-md-6 col-xs-6 text-center menu-1">
-        <ul>
-          <li class="has-dropdown">
-            <a [routerLink]="['/products']">Shop</a>
-<!--            <ul class="dropdown">-->
-<!--              <li><a [routerLink]="['/single']">Single Shop</a></li>-->
-<!--            </ul>-->
+<nav ngxNavbarDynamicExpand class="fh5co-nav fixed-top" role="navigation">
+  <div class="container navbar-container">
+    <a class="navbar-brand" href="#"><div id="fh5co-logo"><a href="index.html">
+      <img src="../../../assets/images/maaksus_logo_and.png" alt="logo"></a></div>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="collapse.toggle()"
+      aria-controls="main-nav"
+      aria-expanded="false"
+      aria-label="Navigáció kapcsoló"
+    >
+    <span
+      class="navbar-toggler-icon d-flex align-items-center justify-content-center"
+    >
+    </span>
+    </button>
+
+    <ngx-navbar-collapse id="main-nav" #collapse="ngxNavbarCollapse" >
+
+      <div class="navbar-nav row">
+        <ul class="menu-1 col-9 d-flex justify-content-center">
+          <li class="has-dropdown nav-item products-wrapper" dropdown triggers="hover" #dp="bs-dropdown" (mouseleave)="dp.hide()">
+            <a [routerLink]="['/products']" class="nav-link dropdown-toggle" id="productsDropdown" dropdownToggle
+            aria-controls="products-dropdown-animated">Art Prints</a>
+            <div class="dropdown-menu" id="products-dropdown-animated" *dropdownMenu
+                 aria-labelledby="productsDropdown" role="menu">
+              <div class="d-flex justify-content-start">
+                <ul class="dropdown-item-wrapper products-dropdown mr-1">
+                  <li role="menuitem" class="dropdown-item"><a [routerLink]="['/products']">Antique Art</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Renaissance</a>
+                  </li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Baroque</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Rococo</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Classicism</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Asian Art</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Romanticism</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Realism</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Impressionism</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Art Nouveau</a></li>
+                </ul>
+
+                <ul class="dropdown-item-wrapper products-dropdown mr-1">
+                  <li role="menuitem" class="dropdown-item"><a [routerLink]="['/single']">Art Deco</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Expressionism</a>
+                  </li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Bauhaus</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Classic Modern</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Age</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">American Realism</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Classic Abstract</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Painting</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Surrealism</a></li>
+                </ul>
+              </div>
+            </div>
           </li>
-          <li><a [routerLink]="['/about']">About</a></li>
-          <li class="has-dropdown">
-            <a [routerLink]="['/services-page']">Services</a>
-            <ul class="dropdown">
-              <li><a href="#">Web Design</a></li>
-              <li><a href="#">eCommerce</a></li>
-              <li><a href="#">Branding</a></li>
-              <li><a href="#">API</a></li>
+
+          <li class="nav-item"><a [routerLink]="['/about']" class="nav-link">About</a></li>
+          <li class="has-dropdown nav-item" dropdown triggers="hover" #dps="bs-dropdown" (mouseleave)="dps.hide()">
+            <a [routerLink]="['/services-page']" class="nav-link dropdown-toggle" id="servicesDropdown" dropdownToggle
+               aria-controls="services-dropdown-animated">Services</a>
+            <ul id="services-dropdown-animated" class="dropdown-menu" role="menu" aria-labelledby="servicesDropdown" *dropdownMenu>
+              <li role="menuitem" class="dropdown-item"><a href="#">Free Delivery</a></li>
+              <li role="menuitem" class="dropdown-item"><a href="#">Design</a></li>
             </ul>
           </li>
-          <li><a [routerLink]="['/contact']">Contact</a></li>
+          <li class="nav-item"><a [routerLink]="['/contact']" class="nav-link">Contact</a></li>
         </ul>
-      </div>
-      <div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
-        <ul>
-          <li class="search">
+
+        <ul class="menu-2 col-3" >
+          <li class="search nav-item">
             <div class="input-group">
               <input type="text" placeholder="Search..">
               <span class="input-group-btn">
-						        <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
-						      </span>
+              <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
+            </span>
             </div>
           </li>
-          <li class="shopping-cart"><a href="javascript:void(0)" class="cart" (click)="openCartModal()">
-            <span><small>{{cartService.totalItems}}</small>
-                <fa-icon [icon]="faShoppingCart" class="fa-icon"></fa-icon>
-              </span></a>
+          <li class="shopping-cart nav-item"><a href="javascript:void(0)" class="cart" (click)="openCartModal()">
+          <span><small>{{cartService.totalItems}}</small>
+            <fa-icon [icon]="faShoppingCart" class="fa-icon"></fa-icon>
+          </span></a>
           </li>
         </ul>
       </div>
-    </div>
-
+    </ngx-navbar-collapse>
   </div>
 </nav>

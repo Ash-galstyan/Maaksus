@@ -1,0 +1,13 @@
+.navbar-toggler-icon {
+  background-color: #d1c286;
+}
+
+.dropdown-menu {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 600px;
+  &.products-dropdown {
+    min-width: 50rem;
+  }
+}
