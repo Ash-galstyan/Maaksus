@@ -32,6 +32,7 @@
     "ngx-bootstrap": "^5.2.0",
     "ngx-bootstrap-navbar": "0.0.5",
     "ngx-checkbox": "0.0.8",
+    "ngx-pagination": "^5.0.0",
     "ngx-swiper-wrapper": "^8.0.2",
     "ngx-toastr": "^8.8.0",
     "node-modules": "^1.0.1",

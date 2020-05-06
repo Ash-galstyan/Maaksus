@@ -1,6 +1,6 @@
 .form-control.sorting-options {
   width: 150px;
-  font-size: 12px;
+  font-size: 14px;
   height: 35px;
   border-top: 0;
   border-right: 0;
@@ -11,7 +11,8 @@
 :host::ng-deep .ng-dropdown-panel {
   background-color: #ffffff;
   left: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1)
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  top: 32px;
 }
 
 /* The container */
@@ -80,4 +81,20 @@
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.custom-select.categories-select {
+  max-width: 180px;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+  &:focus {
+    border-color: #d1c286;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.075), 0 0 5px rgba(209,194,134,1);
+  }
+}
+
+:host::ng-deep .ngx-pagination .current {
+  background: #d1c286;
 }

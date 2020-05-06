@@ -8,6 +8,7 @@ import { CartService } from '../core/services/cart.service';
 import { BsModalService } from 'ngx-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl } from '@angular/forms';
+import { Category, Product } from '../models/product.model';
 
 @Component({
   selector: 'app-products',
@@ -59,7 +60,8 @@ export class ProductsComponent implements OnInit {
   ];
   sortedOption = 'lowToHigh';
   categories: any[];
-  categoriesModel: any;
+  categoriesModel: Category = {};
+  page = 1;
 
   constructor(
     private productsService: ProductsService,
@@ -82,11 +84,13 @@ export class ProductsComponent implements OnInit {
           {
             name: 'Alan Mazetti',
             description: 'alanMazetti',
+            value: '',
             id: 1
           },
           {
             name: 'Alfred Hansl',
             description: 'alfredHansl',
+            value: '',
             id: 2
           }
         ]
@@ -99,11 +103,13 @@ export class ProductsComponent implements OnInit {
           {
             name: 'Portrait',
             description: 'portrait',
+            value: '',
             id: 1
           },
           {
             name: 'Panorama',
             description: 'panorama',
+            value: '',
             id: 2
           }
         ]
