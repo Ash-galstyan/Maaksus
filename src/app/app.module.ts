@@ -14,7 +14,6 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
 import { HeaderComponent } from './fragments/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BsDropdownModule, CarouselModule, ModalModule, TabsModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainCarouselComponent } from './fragments/main-carousel/main-carousel.component';
 import { TestimonyComponent } from './fragments/testimony/testimony.component';
@@ -29,10 +28,15 @@ import { FramesComponent } from './ui/frames/frames.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxCheckboxModule } from 'ngx-checkbox';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
+import { QuickViewProductComponent } from './products/quick-view-product/quick-view-product.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -58,7 +62,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ServicesSummaryComponent,
     FileUploaderComponent,
     FramesComponent,
-    CheckoutPageComponent
+    CheckoutPageComponent,
+    QuickViewProductComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +94,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       useValue: DEFAULT_SWIPER_CONFIG
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [QuickViewProductComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

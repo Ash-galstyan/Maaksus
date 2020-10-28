@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../core/services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-carousel',
@@ -19,10 +20,11 @@ export class MainCarouselComponent implements OnInit {
     autoplay: {
       delay: 5000,
     },
-    fadeEffect: { crossFade: true }
+    fadeEffect: {crossFade: true}
   };
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private router: Router) {
+  }
 
   ngOnInit() {
     this.loadMainCarouselImages();
@@ -34,4 +36,11 @@ export class MainCarouselComponent implements OnInit {
     });
   }
 
+  goToProductDetailPage(product) {
+    this.router.navigate(['./products/detail/', product.id], {
+      queryParams: {
+        productId: product.id
+      }
+    });
+  }
 }

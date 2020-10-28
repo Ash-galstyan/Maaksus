@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../core/services/products.service';
 import { ActivatedRoute } from '@angular/router';
-import { BsModalRef, BsModalService, TabDirective } from 'ngx-bootstrap';
 import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { TabDirective } from 'ngx-bootstrap/tabs';
 
 @Component({
   selector: 'app-product-details',

@@ -1,8 +1,8 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BsModalService } from 'ngx-bootstrap';
 import { Product } from '../../models/product.model';
 import { BehaviorSubject } from 'rxjs';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Injectable()
 export class CartService {

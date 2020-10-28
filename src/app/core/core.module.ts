@@ -10,9 +10,10 @@ import { CartComponent } from './components/cart/cart.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LimitProductsShownPipe } from './pipes/limitProductsShown';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
-  declarations: [CounterComponent, CartComponent, LimitProductsShownPipe],
+  declarations: [CounterComponent, CartComponent, LimitProductsShownPipe, CarouselComponent],
   entryComponents: [
     CartComponent
   ],
@@ -21,7 +22,7 @@ import { LimitProductsShownPipe } from './pipes/limitProductsShown';
     FormsModule,
     FontAwesomeModule
   ],
-  exports: [CounterComponent, LimitProductsShownPipe]
+  exports: [CounterComponent, LimitProductsShownPipe, CarouselComponent]
 })
 export class CoreModule {
   static forRoot() {

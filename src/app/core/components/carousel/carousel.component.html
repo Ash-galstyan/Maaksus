@@ -1,0 +1,23 @@
+<div class="carousel">
+  <ng-container *ngFor="let slide of slides; let i = index">
+    <img
+      *ngIf="i === currentSlide"
+      [src]="slide"
+      class="slide"
+      alt="slide"
+      @carouselAnimation
+    />
+  </ng-container>
+
+  <button class="control prev" (click)="onPreviousClick()">
+    <span class="arrow left"></span>
+  </button>
+  <button class="control next" (click)="onNextClick()">
+    <span class="arrow right"></span>
+  </button>
+</div>
+<div class="thumbs-container mr-2">
+  <div class="thumb" *ngFor="let thumb of slides; let i = index" (click)="onThumbClick(i)">
+    <img [src]="thumb" alt="thumb" [ngClass]="currentSlide === i ? 'bordered' : ''"/>
+  </div>
+</div>

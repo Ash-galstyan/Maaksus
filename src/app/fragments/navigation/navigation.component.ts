@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { BsDropdownConfig, BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { CartComponent } from '../../core/components/cart/cart.component';
 import { CartService } from '../../core/services/cart.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 @Component({
   selector: 'app-navigation',

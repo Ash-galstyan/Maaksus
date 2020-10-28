@@ -848,9 +848,10 @@ form {
         opacity: 1;
         background: transparent;
       }
-      p{
+      a.product-icon-wrapper {
         display: table-cell;
         vertical-align: middle;
+        cursor: pointer;
         .icon{
           padding: 7px 10px;
           color: $brand-white;
@@ -940,7 +941,7 @@ form {
         border: 2px solid $brand-primary;
         display: inline-block;
         margin-bottom: 20px;
-        padding: 7px 20px 10px 20px;
+        padding: 9px 20px 7px 20px;
       }
     }
     ul{

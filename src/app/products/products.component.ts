@@ -5,10 +5,11 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { animate, stagger, style, transition, trigger, query, keyframes } from '@angular/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../core/services/cart.service';
-import { BsModalService } from 'ngx-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl } from '@angular/forms';
 import { Category, Product } from '../models/product.model';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { QuickViewProductComponent } from './quick-view-product/quick-view-product.component';
 
 @Component({
   selector: 'app-products',
@@ -62,6 +63,7 @@ export class ProductsComponent implements OnInit {
   categories: any[];
   categoriesModel: Category = {};
   page = 1;
+  bsModalRef: BsModalRef;
 
   constructor(
     private productsService: ProductsService,
@@ -129,12 +131,22 @@ export class ProductsComponent implements OnInit {
     console.log('Added to cart');
   }
 
-  goToProductDetailPage(product) {
-    this.router.navigate(['./products/detail/', product.id], {
-      queryParams: {
-        productId: product.id
-      }
-    });
+  goToProductDetailPage(product, event) {
+    event.stopPropagation();
+    if (event.target.className === 'product-icon-wrapper') {
+      this.router.navigate(['./products/detail/', product.id], {
+        queryParams: {
+          productId: product.id
+        }
+      });
+    }
+  }
+
+  openProductQuickViewModal(product) {
+    this.bsModalRef = this.modalService.show(QuickViewProductComponent, {class: 'modal-lg'});
+    this.bsModalRef.content.closeBtnName = 'Close';
+    this.bsModalRef.content.slides = product.detailImages;
+    this.bsModalRef.content.product = product;
   }
 
   filterCategories(event) {
