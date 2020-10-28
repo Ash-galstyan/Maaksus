@@ -5,9 +5,10 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { animate, stagger, style, transition, trigger, query, keyframes } from '@angular/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../core/services/cart.service';
-import { CartComponent } from '../core/components/cart/cart.component';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { BsModalService } from 'ngx-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { FormControl } from '@angular/forms';
+import { Category, Product } from '../models/product.model';
 
 @Component({
   selector: 'app-products',
@@ -42,7 +43,25 @@ export class ProductsComponent implements OnInit {
   faShoppingCart = faShoppingCart;
   faEye = faEye;
   productsComponentIsInView = false;
-  bsModalRef: BsModalRef;
+  rememberLoginControl = new FormControl();
+  sortingOptions = [
+    {
+      value: 'lowToHigh',
+      label: 'Price, Low to High'
+    },
+    {
+      value: 'highToLow',
+      label: 'Price, High to Low'
+    },
+    {
+      value: 'mostRecent',
+      label: 'Most Recent'
+    }
+  ];
+  sortedOption = 'lowToHigh';
+  categories: any[];
+  categoriesModel: Category = {};
+  page = 1;
 
   constructor(
     private productsService: ProductsService,
@@ -56,6 +75,46 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.productsComponentIsInView = this.isInSeparatePage;
     this.getProducts();
+    this.categories = [
+      {
+        name: 'Artists',
+        description: 'artists',
+        id: 1,
+        fields: [
+          {
+            name: 'Alan Mazetti',
+            description: 'alanMazetti',
+            value: '',
+            id: 1
+          },
+          {
+            name: 'Alfred Hansl',
+            description: 'alfredHansl',
+            value: '',
+            id: 2
+          }
+        ]
+      },
+      {
+        name: 'Alignment',
+        description: 'alignment',
+        id: 2,
+        fields: [
+          {
+            name: 'Portrait',
+            description: 'portrait',
+            value: '',
+            id: 1
+          },
+          {
+            name: 'Panorama',
+            description: 'panorama',
+            value: '',
+            id: 2
+          }
+        ]
+      }
+    ];
   }
 
   getProducts() {
@@ -76,6 +135,10 @@ export class ProductsComponent implements OnInit {
         productId: product.id
       }
     });
+  }
+
+  filterCategories(event) {
+    console.log(event);
   }
 
   @HostListener('window:scroll', ['$event'])

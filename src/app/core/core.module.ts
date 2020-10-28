@@ -9,10 +9,10 @@ import { TestimoniesService } from './services/testimonies.service';
 import { CartComponent } from './components/cart/cart.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-// import { NumberValueAccessorDirective } from './directives/number-value-accessor';
+import { LimitProductsShownPipe } from './pipes/limitProductsShown';
 
 @NgModule({
-  declarations: [CounterComponent, CartComponent],
+  declarations: [CounterComponent, CartComponent, LimitProductsShownPipe],
   entryComponents: [
     CartComponent
   ],
@@ -21,7 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     FontAwesomeModule
   ],
-  exports: [CounterComponent]
+  exports: [CounterComponent, LimitProductsShownPipe]
 })
 export class CoreModule {
   static forRoot() {

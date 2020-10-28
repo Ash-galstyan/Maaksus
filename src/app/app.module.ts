@@ -28,7 +28,11 @@ import { CoreModule } from './core/core.module';
 import { FramesComponent } from './ui/frames/frames.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ToastrModule } from 'ngx-toastr';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxCheckboxModule } from 'ngx-checkbox';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -72,7 +76,12 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ToastrModule.forRoot({
       positionClass: 'toast-top-center'
     }),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxNavbarModule,
+    NgSelectModule,
+    FormsModule,
+    NgxCheckboxModule,
+    NgxPaginationModule
   ],
   providers: [
     {

@@ -1,14 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { BsDropdownConfig, BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { CartComponent } from '../../core/components/cart/cart.component';
 import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  styleUrls: ['./navigation.component.scss'],
+  providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 })
 export class NavigationComponent implements OnInit, OnDestroy {
   faShoppingCart = faShoppingCart;
