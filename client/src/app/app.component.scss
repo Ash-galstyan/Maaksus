@@ -21,4 +21,8 @@
   input[type=number] {
     -moz-appearance: textfield;
   }
+
+  .modal-dialog.modal-lg {
+    max-width: 1000px;
+  }
 }
