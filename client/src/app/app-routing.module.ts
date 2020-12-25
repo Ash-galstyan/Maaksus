@@ -8,6 +8,10 @@ import { ContactComponent } from './contact/contact.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { ProductsResolver } from './core/resolvers/products.resolver';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FavoritesComponent } from './fragments/favorites/favorites.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -51,6 +55,19 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutPageComponent
+  },
+  {
+    path: 'account',
+    component: AuthenticationComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'favorites',
+    component: FavoritesComponent
   }
 ];
 

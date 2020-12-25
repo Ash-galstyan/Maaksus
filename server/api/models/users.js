@@ -23,8 +23,6 @@ const userSchema = new mongoose.Schema({
     salt: String
 });
 
-mongoose.model('User', userSchema);
-
 userSchema.methods.setPassword = function(password) {
     this.salt = crypto.randomBytes(16).toString('hex');
     this.hash = crypto
@@ -53,3 +51,5 @@ userSchema.methods.generateJwt = function() {
         process.env.ACCESS_TOKEN_SECRET
     ); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
+
+mongoose.model('User', userSchema);

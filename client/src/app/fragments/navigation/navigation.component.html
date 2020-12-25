@@ -75,7 +75,7 @@
           <li class="nav-item"><a [routerLink]="['/contact']" class="nav-link">Contact</a></li>
         </ul>
 
-        <ul class="menu-2 col-3" >
+        <ul class="menu-2 col-3 d-flex justify-content-between align-items-center">
           <li class="search nav-item">
             <div class="input-group">
               <input type="text" placeholder="Search..">
@@ -85,12 +85,38 @@
             </div>
           </li>
           <li class="shopping-cart nav-item"><a href="javascript:void(0)" class="cart" (click)="openCartModal()">
-          <span><small>{{cartService.totalItems}}</small>
-            <fa-icon [icon]="faShoppingCart" class="fa-icon"></fa-icon>
-          </span></a>
+            <span><small>{{cartService.totalItems}}</small>
+              <fa-icon [icon]="faShoppingCart" class="fa-icon"></fa-icon>
+            </span></a>
           </li>
         </ul>
+
+        <div class="profile-link" *ngIf="authService.isLoggedIn()">
+          <a routerLink="/profile">Welcome {{ authService.getUserDetails()?.name }}!</a>
+        </div>
+
+        <div class="user-icon-wrapper" (click)="toggleSection()">
+          <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+          </svg>
+        </div>
       </div>
     </ngx-navbar-collapse>
   </div>
 </nav>
+
+<aside class="login-section-wrapper pl-4 pt-4 pr-4" [ngClass]="isLoginSectionVisible ? 'show' : 'hide'">
+  <span aria-hidden="true" (click)="toggleSection()" class="close">&times;</span>
+  <h5>My Account</h5>
+  <ul class="login-sections mt-4 pl-0" *ngIf="!authService.isLoggedIn()">
+    <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: false }" (click)="toggleSection()">Sign In</a></li>
+    <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: true }" (click)="toggleSection()">Create Account</a></li>
+  </ul>
+  <ul class="login-sections mt-4 pl-0">
+    <li class="login-section" *ngIf="authService.isLoggedIn()"><a>My Favorites</a></li>
+    <li class="login-section" *ngIf="authService.isLoggedIn()"><a (click)="authService.logout()">Logout</a></li>
+  </ul>
+</aside>
+<div class="overflow" [ngClass]="isLoginSectionVisible ? 'show' : 'hide'" (click)="toggleSection()"></div>

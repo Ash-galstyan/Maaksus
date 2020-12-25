@@ -9,7 +9,6 @@ module.exports.profileRead = (req, res) => {
         });
     } else {
         // Otherwise continue
-        // TODO add case if user is not found, possibly other error handling cases may be required
         User.findById(req.payload._id).exec(function(err, user) {
             res.status(200).json(user);
         });

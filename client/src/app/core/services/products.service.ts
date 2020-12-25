@@ -11,7 +11,7 @@ export class ProductsService {
   }
 
   loadProducts() {
-    return this.http.get('http://localhost:3000/products');
+    return this.http.get('/products');
   }
 
   loadMainCarouselImages() {

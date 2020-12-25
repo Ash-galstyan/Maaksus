@@ -28,8 +28,8 @@ export class AuthenticationComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((account: any) => {
       this.isNewAccount = account.isNewAccount === 'true';
+      this.mainForm();
     });
-    this.mainForm();
   }
 
   mainForm() {
@@ -68,23 +68,20 @@ export class AuthenticationComponent implements OnInit {
     this.submitted = true;
     const form = this.userForm.getRawValue();
     if (this.userForm.valid && !this.isNewAccount) {
-      this.userService.getUser(this.userForm.controls.email.value, this.userForm.controls.password.value, );
+      this.authService.login(form).subscribe((res) => {
+        this.router.navigate(['/profile']);
+      }, err => {
+        console.log(err);
+      });
     } else if (this.userForm.valid && this.isNewAccount) {
       form.password = form.passwordValidation.password;
       delete form.passwordValidation;
       this.authService.register(form).subscribe((res) => {
-        console.log(res);
+        this.router.navigate(['/profile']);
       },
       err => {
         console.log(err);
       });
-      // this.userService.createUser(this.userForm.value).subscribe(
-      //   (res) => {
-      //     console.log('User successfully created!');
-      //     this.ngZone.run(() => this.router.navigateByUrl(''));
-      //   }, (error) => {
-      //     console.log(error);
-      // });
     } else {
       return false;
     }

@@ -26,33 +26,6 @@ export class AuthenticationService {
     return this.token;
   }
 
-  public logout(): void {
-    this.token = '';
-    window.localStorage.removeItem('mean-token');
-    this.router.navigateByUrl('/');
-  }
-
-  public getUserDetails(): UserDetails {
-    const token = this.getToken();
-    let payload;
-    if (token) {
-      payload = token.split('.')[1];
-      payload = window.atob(payload);
-      return JSON.parse(payload);
-    } else {
-      return null;
-    }
-  }
-
-  public isLoggedIn(): boolean {
-    const user = this.getUserDetails();
-    if (user) {
-      return user.exp > Date.now() / 1000;
-    } else {
-      return false;
-    }
-  }
-
   private request(
     method: 'post' | 'get',
     type: 'login' | 'register' | 'profile',
@@ -78,6 +51,33 @@ export class AuthenticationService {
     );
 
     return request;
+  }
+
+  public logout(): void {
+    this.token = '';
+    window.localStorage.removeItem('mean-token');
+    this.router.navigateByUrl('/');
+  }
+
+  public getUserDetails(): UserDetails {
+    const token = this.getToken();
+    let payload;
+    if (token) {
+      payload = token.split('.')[1];
+      payload = window.atob(payload);
+      return JSON.parse(payload);
+    } else {
+      return null;
+    }
+  }
+
+  public isLoggedIn(): boolean {
+    const user = this.getUserDetails();
+    if (user) {
+      return user.exp > Date.now() / 1000;
+    } else {
+      return false;
+    }
   }
 
   public register(user: TokenPayload): Observable<any> {

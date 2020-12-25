@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LimitProductsShownPipe } from './pipes/limitProductsShown';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [CounterComponent, CartComponent, LimitProductsShownPipe, CarouselComponent],
@@ -33,7 +34,8 @@ export class CoreModule {
         ProductsResolver,
         ImageService,
         TestimoniesService,
-        CartService
+        CartService,
+        AuthenticationService
       ],
     };
   }

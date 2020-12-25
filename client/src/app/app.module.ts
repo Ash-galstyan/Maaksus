@@ -37,6 +37,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 import { QuickViewProductComponent } from './products/quick-view-product/quick-view-product.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FavoritesComponent } from './fragments/favorites/favorites.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -63,7 +66,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     FileUploaderComponent,
     FramesComponent,
     CheckoutPageComponent,
-    QuickViewProductComponent
+    QuickViewProductComponent,
+    AuthenticationComponent,
+    ProfileComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

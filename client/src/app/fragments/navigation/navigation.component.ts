@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { CartComponent } from '../../core/components/cart/cart.component';
 import { CartService } from '../../core/services/cart.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { AuthenticationService } from '../../core/services/authentication.service';
 
 @Component({
   selector: 'app-navigation',
@@ -15,22 +16,29 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 export class NavigationComponent implements OnInit, OnDestroy {
   faShoppingCart = faShoppingCart;
   bsModalRef: BsModalRef;
-  itemsInCart = 0;
+  isLoginSectionVisible = false;
 
   constructor(
     private router: Router,
     private modalService: BsModalService,
-    public cartService: CartService
+    public cartService: CartService,
+    private authService: AuthenticationService,
+    private elRef: ElementRef
   ) {
   }
 
   ngOnInit() {
-
   }
 
   openCartModal() {
     this.bsModalRef = this.modalService.show(CartComponent);
     this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  toggleSection() {
+    this.isLoginSectionVisible = !this.isLoginSectionVisible;
+    this.isLoginSectionVisible ? this.elRef.nativeElement.ownerDocument.body.style.overflow = 'hidden' :
+      this.elRef.nativeElement.ownerDocument.body.style.overflow = null;
   }
 
   ngOnDestroy() {
