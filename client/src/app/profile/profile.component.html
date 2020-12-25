@@ -1,0 +1,17 @@
+<div class="pages-wrapper profile-page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <h1>Hello {{details?.name}}</h1>
+        <h4>{{details?.email}}</h4>
+      </div>
+      <div class="col-12 col-md-4">
+        <ul class="profile-sections-wrapper">
+          <li class="profile-section"><a href="">My Account</a></li>
+          <li class="profile-section"><a href="">Order History</a></li>
+          <li class="profile-section"><a [routerLink]="['/favorites']">Favorite Items</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

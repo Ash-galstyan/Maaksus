@@ -1,0 +1,122 @@
+<!--<div class="fh5co-loader"></div>-->
+<nav ngxNavbarDynamicExpand class="fh5co-nav fixed-top" role="navigation">
+  <div class="container navbar-container">
+    <a class="navbar-brand" href="#"><div id="fh5co-logo"><a href="index.html">
+      <img src="../../../assets/images/maaksus_logo_and.png" alt="logo"></a></div>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="collapse.toggle()"
+      aria-controls="main-nav"
+      aria-expanded="false"
+      aria-label="Navigáció kapcsoló"
+    >
+    <span
+      class="navbar-toggler-icon d-flex align-items-center justify-content-center"
+    >
+    </span>
+    </button>
+
+    <ngx-navbar-collapse id="main-nav" #collapse="ngxNavbarCollapse" >
+
+      <div class="navbar-nav row">
+        <ul class="menu-1 col-9 d-flex justify-content-center">
+          <li class="has-dropdown nav-item products-wrapper" dropdown triggers="hover" #dp="bs-dropdown" (mouseleave)="dp.hide()">
+            <a [routerLink]="['/products']" class="nav-link dropdown-toggle" id="button-animated" dropdownToggle
+            aria-controls="dropdown-animated">Art Prints</a>
+            <div class="dropdown-menu" id="dropdown-animated" *dropdownMenu
+                 aria-labelledby="button-animated" role="menu">
+              <div class="d-flex justify-content-start">
+                <ul class="dropdown-item-wrapper products-dropdown mr-1">
+                  <li role="menuitem" class="dropdown-item"><a [routerLink]="['/products']">Antique Art</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Renaissance</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Baroque</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Rococo</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Classicism</a></li>
+                </ul>
+
+                <ul class="dropdown-item-wrapper products-dropdown mr-1">
+                  <li role="menuitem" class="dropdown-item"><a href="#">Asian Art</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Romanticism</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Realism</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Impressionism</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Art Nouveau</a></li>
+                </ul>
+
+                <ul class="dropdown-item-wrapper products-dropdown mr-1">
+                  <li role="menuitem" class="dropdown-item"><a [routerLink]="['/single']">Art Deco</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Expressionism</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Bauhaus</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Classic Modern</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Age</a></li>
+                </ul>
+
+                <ul class="dropdown-item-wrapper products-dropdown mr-1">
+                  <li role="menuitem" class="dropdown-item"><a href="#">American Realism</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Classic Abstract</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Painting</a></li>
+                  <li role="menuitem" class="dropdown-item"><a href="#">Surrealism</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item"><a [routerLink]="['/about']" class="nav-link">About</a></li>
+          <li class="has-dropdown nav-item" dropdown triggers="hover" #dps="bs-dropdown" (mouseleave)="dps.hide()">
+            <a [routerLink]="['/services-page']" class="nav-link dropdown-toggle" id="servicesDropdown" dropdownToggle
+               aria-controls="services-dropdown-animated">Services</a>
+            <ul id="services-dropdown-animated" class="dropdown-menu" role="menu" aria-labelledby="servicesDropdown" *dropdownMenu>
+              <li role="menuitem" class="dropdown-item"><a href="#">Free Delivery</a></li>
+              <li role="menuitem" class="dropdown-item"><a href="#">Design</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a [routerLink]="['/contact']" class="nav-link">Contact</a></li>
+        </ul>
+
+        <ul class="menu-2 col-3 d-flex justify-content-between align-items-center">
+          <li class="search nav-item">
+            <div class="input-group">
+              <input type="text" placeholder="Search..">
+              <span class="input-group-btn">
+              <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
+            </span>
+            </div>
+          </li>
+          <li class="shopping-cart nav-item"><a href="javascript:void(0)" class="cart" (click)="openCartModal()">
+            <span><small>{{cartService.totalItems}}</small>
+              <fa-icon [icon]="faShoppingCart" class="fa-icon"></fa-icon>
+            </span></a>
+          </li>
+        </ul>
+
+        <div class="profile-link" *ngIf="authService.isLoggedIn()">
+          <a routerLink="/profile">Welcome {{ authService.getUserDetails()?.name }}!</a>
+        </div>
+
+        <div class="user-icon-wrapper" (click)="toggleSection()">
+          <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+          </svg>
+        </div>
+      </div>
+    </ngx-navbar-collapse>
+  </div>
+</nav>
+
+<aside class="login-section-wrapper pl-4 pt-4 pr-4" [ngClass]="isLoginSectionVisible ? 'show' : 'hide'">
+  <span aria-hidden="true" (click)="toggleSection()" class="close">&times;</span>
+  <h5>My Account</h5>
+  <ul class="login-sections mt-4 pl-0" *ngIf="!authService.isLoggedIn()">
+    <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: false }" (click)="toggleSection()">Sign In</a></li>
+    <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: true }" (click)="toggleSection()">Create Account</a></li>
+  </ul>
+  <ul class="login-sections mt-4 pl-0">
+    <li class="login-section" *ngIf="authService.isLoggedIn()"><a>My Favorites</a></li>
+    <li class="login-section" *ngIf="authService.isLoggedIn()"><a (click)="authService.logout()">Logout</a></li>
+  </ul>
+</aside>
+<div class="overflow" [ngClass]="isLoginSectionVisible ? 'show' : 'hide'" (click)="toggleSection()"></div>

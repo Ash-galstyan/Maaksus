@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h4 class="modal-title">Shopping Cart ({{cartService.totalItems}})</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="cart-products-wrapper">
+    <div>
+      <div class="cart-products mb-2 row" *ngFor="let product of products">
+        <div class="col-3"><img [src]="product.img"></div>
+        <div class="col-6 product-information">
+          <h6>{{product.productName}}</h6>
+          <span>{{product.artist}}</span>
+        </div>
+        <div class="col-3 quantity-section-wrapper">
+          <span>{{product.price}}</span>
+          <span class="item-quantity d-block ml-3">{{product.quantity}}</span>
+          <div class="quantity-icons-wrapper">
+            <a class="plus" href="javascript:void(0)"><fa-icon [icon]="faPlusCircle" class="fa-icon"
+                                                               (click)="changeProductQuantity(product, 'add')"></fa-icon></a>
+            <a class="minus" href="javascript:void(0)"><fa-icon [icon]="faMinusCircle" class="fa-icon"
+                                                                (click)="changeProductQuantity(product, 'remove')"></fa-icon></a>
+          </div>
+        </div>
+      </div>
+      <div class="text-right"><span class="text-right">{{cartService.totalPrice}} $</span></div>
+    </div>
+    <h4 *ngIf="products.length === 0">No Added Products</h4>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="proceedToCheckout(products)">Proceed to Checkout</button>
+  <button type="button" class="btn btn-default" (click)="clearCart()">Clear Cart</button>
+  <button type="button" class="btn btn-danger" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+</div>

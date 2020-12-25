@@ -1,0 +1,27 @@
+<div class="modal-body">
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="container">
+    <div class="row">
+      <div class="col-9">
+        <app-carousel [slides]="slides"></app-carousel>
+      </div>
+      <div class="col-3 quick-view-desc-wrapper">
+        <div class="desc">c
+          <span class="price">$800</span>
+          <h4>{{product.artist}}</h4>
+          <h5>{{product.productName}}</h5>
+          <p>{{product.productDescription}}</p>
+          <p>Product Code: {{product.id}}</p>
+        </div>
+        <span>{{product.availability}}</span>
+        <a (click)="addToCart()" class="btn btn-primary btn-outline btn-lg">Add to Cart</a>
+        <div class="mt-3">
+          <p class="mb-0">In order to customize</p>
+          <a class="btn btn-primary btn-outline" (click)="goToProductDetailPage()">View Full Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+::ng-deep #fh5co-product swiper > .swiper.s-wrapper {
+  height: 600px;
+}
+
+.frame-preview-wrapper {
+  height: 400px;
+  .frame {
+    width: 300px;
+    display: block;
+    height: auto;
+    img {
+      width: 100%;
+      height: 380px;
+    }
+  }
+}
