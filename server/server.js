@@ -1,13 +1,15 @@
-require('./api/models/db');
-require('./api/config/passport');
-require('dotenv').config();
-
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const express = require('express');
 const logger = require('morgan');
 const passport = require('passport');
 const path = require('path');
+
+require('./api/models/db');
+require('./api/models/product-model');
+require('./api/models/users');
+require('./api/config/passport');
+require('dotenv').config();
 
 const routesApi = require('./api/routes/index');
 

@@ -5,7 +5,17 @@ export interface Category {
 }
 
 export interface Product {
-  name?: string;
+  id?: number;
+  productName?: string;
+  articleNumber?: string;
+  artist?: string;
+  style?: string;
+  availability?: string;
   price?: number;
+  width?: number;
+  height?: number;
+  img?: string;
+  detailImages?: any;
+  artistDescription?: string;
   category?: Category;
 }

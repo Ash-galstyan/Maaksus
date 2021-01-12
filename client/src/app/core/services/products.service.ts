@@ -11,10 +11,10 @@ export class ProductsService {
   }
 
   loadProducts() {
-    return this.http.get('http://localhost:3000/products');
+    return this.http.get('/api/products');
   }
 
-  loadMainCarouselImages() {
-    return this.http.get('http://localhost:3000/mainCarouselProducts');
+  loadRecommendedProducts(user: any) {
+    return this.loadProducts();
   }
 }

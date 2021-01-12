@@ -31,8 +31,8 @@ export class MainCarouselComponent implements OnInit {
   }
 
   loadMainCarouselImages() {
-    return this.productsService.loadMainCarouselImages().subscribe((products: any) => {
-      this.slides = products;
+    return this.productsService.loadProducts().subscribe((res: any) => {
+      this.slides = res.data[0].mainCarouselProducts;
     });
   }
 

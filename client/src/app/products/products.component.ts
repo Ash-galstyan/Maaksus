@@ -76,7 +76,11 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.productsComponentIsInView = this.isInSeparatePage;
-    this.getProducts();
+    if (!this.activatedRoute.snapshot.data.products) {
+      this.getProducts();
+    } else {
+      this.products = this.activatedRoute.snapshot.data.products.data[0].products;
+    }
     this.categories = [
       {
         name: 'Artists',
@@ -120,8 +124,9 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    return this.productsService.loadProducts().subscribe((products: any[]) => {
-      this.products = products;
+    return this.productsService.loadProducts().subscribe((res: any) => {
+      this.products = res.data[0].products;
+      console.log(res);
     });
   }
 
