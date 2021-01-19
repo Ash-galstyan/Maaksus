@@ -7,6 +7,6 @@ export class TestimoniesService {
   }
 
   loadTestimonies() {
-    // return this.http.get('http://localhost:3100/testimonies');
+    return this.http.get('/api/testimonies');
   }
 }

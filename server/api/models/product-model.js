@@ -11,7 +11,8 @@ const productSchema = new mongoose.Schema({
     width: Number,
     height: Number,
     img: String,
-    artistDescription: String
+    artistDescription: String,
+    category: String
 });
 
 mongoose.model('Product', productSchema);

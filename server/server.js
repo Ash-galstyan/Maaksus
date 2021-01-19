@@ -7,6 +7,7 @@ const path = require('path');
 
 require('./api/models/db');
 require('./api/models/product-model');
+require('./api/models/testimonies-model');
 require('./api/models/users');
 require('./api/config/passport');
 require('dotenv').config();

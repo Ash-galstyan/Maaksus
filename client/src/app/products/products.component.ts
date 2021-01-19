@@ -60,7 +60,7 @@ export class ProductsComponent implements OnInit {
     }
   ];
   sortedOption = 'lowToHigh';
-  categories: any[];
+  filters: any[];
   categoriesModel: Category = {};
   page = 1;
   bsModalRef: BsModalRef;
@@ -81,7 +81,7 @@ export class ProductsComponent implements OnInit {
     } else {
       this.products = this.activatedRoute.snapshot.data.products.data[0].products;
     }
-    this.categories = [
+    this.filters = [
       {
         name: 'Artists',
         description: 'artists',
@@ -96,6 +96,12 @@ export class ProductsComponent implements OnInit {
           {
             name: 'Alfred Hansl',
             description: 'alfredHansl',
+            value: '',
+            id: 2
+          },
+          {
+            name: 'Pablo Picasso',
+            description: 'pabloPicasso',
             value: '',
             id: 2
           }

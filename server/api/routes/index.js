@@ -6,6 +6,7 @@ require('dotenv').config();
 const ctrlAuth = require('../controllers/authentication');
 const ctrlProfile = require('../controllers/profile');
 const ctrlProducts = require('../controllers/products');
+const ctrlTestimonies = require('../controllers/testimonies');
 
 // authentication
 router.post('/register', ctrlAuth.register);
@@ -13,6 +14,9 @@ router.post('/login', ctrlAuth.login);
 
 // Products
 router.get('/products', ctrlProducts.getProducts);
+
+// Testimonies
+router.get('/testimonies', ctrlTestimonies.getTestimonies);
 
 const auth = jwt({
     secret: secret,

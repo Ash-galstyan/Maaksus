@@ -12,10 +12,10 @@
       <div class="container">
         <div class="row">
           <div class="col-2" *ngIf="isInSeparatePage">
-            <h4>Category</h4>
-            <div *ngFor="let category of categories">
-              <h5>{{category.name}}</h5>
-              <div *ngFor="let field of category.fields">
+            <h4>Filters</h4>
+            <div *ngFor="let filter of filters">
+              <h5>{{filter.name}}</h5>
+              <div *ngFor="let field of filter.fields">
                 <label class="container">{{field.name}}
                   <input type="checkbox" [(ngModel)]="field.value">
                   <span class="checkmark"></span>
