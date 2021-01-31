@@ -47,7 +47,7 @@
                 </select>
               </div>
 
-              <div *ngFor="let product of products | limitProductsShown: isInSeparatePage | paginate: { itemsPerPage: 12, currentPage: page }; let i = index" class="text-center animate-box fadeIn"
+              <div *ngFor="let product of products | paginate: { itemsPerPage: 12, currentPage: page }; let i = index" class="text-center animate-box fadeIn"
                    [ngClass]="isInSeparatePage ? 'col-12 col-md-3' : 'col-12 col-md-4'">
                 <div class="product">
                   <div class="product-grid" [ngStyle]="{ 'background-image': 'url(' + product.img + ')', height: '250px'}">

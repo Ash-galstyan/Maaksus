@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../core/services/products.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Carousel } from '../../models/product.model';
 
 @Component({
   selector: 'app-main-carousel',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./main-carousel.component.scss']
 })
 export class MainCarouselComponent implements OnInit {
-  slides: any[] = [];
+  slides: Carousel[] = [];
   config = {
     effect: 'fade',
     speed: 1500,
@@ -23,16 +24,16 @@ export class MainCarouselComponent implements OnInit {
     fadeEffect: {crossFade: true}
   };
 
-  constructor(private productsService: ProductsService, private router: Router) {
+  constructor(
+    private productsService: ProductsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
   }
 
   ngOnInit() {
-    this.loadMainCarouselImages();
-  }
-
-  loadMainCarouselImages() {
-    return this.productsService.loadProducts().subscribe((res: any) => {
-      this.slides = res.data[0].mainCarouselProducts;
+    this.productsService.loadMainCarousel().subscribe((res: any) => {
+      this.slides = res.data;
     });
   }
 

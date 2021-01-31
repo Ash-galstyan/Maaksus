@@ -7,13 +7,18 @@ const ctrlAuth = require('../controllers/authentication');
 const ctrlProfile = require('../controllers/profile');
 const ctrlProducts = require('../controllers/products');
 const ctrlTestimonies = require('../controllers/testimonies');
+const ctrlMainCarousel = require('../controllers/mainCarousel');
 
 // authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
+// Main Carousel
+router.get('/mainCarousel', ctrlMainCarousel.getMainCarousel);
+
 // Products
 router.get('/products', ctrlProducts.getProducts);
+router.get('/popularProducts', ctrlProducts.getPopularProducts);
 
 // Testimonies
 router.get('/testimonies', ctrlTestimonies.getTestimonies);

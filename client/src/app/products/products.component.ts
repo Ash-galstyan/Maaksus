@@ -1,4 +1,13 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { ProductsService } from '../core/services/products.service';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
@@ -39,7 +48,7 @@ export class ProductsComponent implements OnInit {
   @Input() isInSeparatePage = true;
   @Output() productAdded = new EventEmitter();
 
-  products: any[] = [];
+  products: Product[] = [];
   resolverData: any = this.isInSeparatePage ? this.activatedRoute.snapshot.data : undefined;
   faShoppingCart = faShoppingCart;
   faEye = faEye;
@@ -76,10 +85,12 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.productsComponentIsInView = this.isInSeparatePage;
-    if (!this.activatedRoute.snapshot.data.products) {
-      this.getProducts();
+    if (this.isInSeparatePage) {
+      this.products = this.productsService.products;
     } else {
-      this.products = this.activatedRoute.snapshot.data.products.data[0].products;
+      this.productsService.loadPopularProducts().subscribe((res: any) => {
+        this.products = res.popularProducts;
+      });
     }
     this.filters = [
       {
@@ -127,13 +138,6 @@ export class ProductsComponent implements OnInit {
         ]
       }
     ];
-  }
-
-  getProducts() {
-    return this.productsService.loadProducts().subscribe((res: any) => {
-      this.products = res.data[0].products;
-      console.log(res);
-    });
   }
 
   addToCart(product: any) {

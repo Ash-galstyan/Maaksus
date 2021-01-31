@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-    id: Number,
+    id: String,
     productName: String,
     articleNumber: String,
     artist: String,
@@ -15,4 +15,19 @@ const productSchema = new mongoose.Schema({
     category: String
 });
 
+const popularProductsSchema = new mongoose.Schema({
+    productName: String,
+    productDescription: String,
+    articleNumber: String,
+    artist: String,
+    style: String,
+    availability: String,
+    price: Number,
+    width: Number,
+    height: Number,
+    img: String,
+    artistDescription: String
+});
+
 mongoose.model('Product', productSchema);
+mongoose.model('PopularProducts', popularProductsSchema, 'popularProducts');

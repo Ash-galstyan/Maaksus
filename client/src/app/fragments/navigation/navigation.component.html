@@ -109,7 +109,7 @@
 
 <aside class="login-section-wrapper pl-4 pt-4 pr-4" [ngClass]="isLoginSectionVisible ? 'show' : 'hide'">
   <span aria-hidden="true" (click)="toggleSection()" class="close">&times;</span>
-  <h5>My Account</h5>
+  <a [routerLink]="'/profile'"><h5>My Account</h5></a>
   <ul class="login-sections mt-4 pl-0" *ngIf="!authService.isLoggedIn()">
     <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: false }" (click)="toggleSection()">Sign In</a></li>
     <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: true }" (click)="toggleSection()">Create Account</a></li>
