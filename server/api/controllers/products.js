@@ -74,3 +74,8 @@ module.exports.getPopularProducts = (req, res) => {
         });
     })
 };
+
+module.exports.sortProductsAscending = (err, db) => {
+    if (err) throw err;
+
+};
