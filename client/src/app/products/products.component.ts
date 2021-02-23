@@ -1,4 +1,13 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { ProductsService } from '../core/services/products.service';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
@@ -39,7 +48,7 @@ export class ProductsComponent implements OnInit {
   @Input() isInSeparatePage = true;
   @Output() productAdded = new EventEmitter();
 
-  products: any[] = [];
+  products: Product[] = [];
   resolverData: any = this.isInSeparatePage ? this.activatedRoute.snapshot.data : undefined;
   faShoppingCart = faShoppingCart;
   faEye = faEye;
@@ -60,7 +69,7 @@ export class ProductsComponent implements OnInit {
     }
   ];
   sortedOption = 'lowToHigh';
-  categories: any[];
+  filters: any[];
   categoriesModel: Category = {};
   page = 1;
   bsModalRef: BsModalRef;
@@ -76,8 +85,14 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.productsComponentIsInView = this.isInSeparatePage;
-    this.getProducts();
-    this.categories = [
+    if (this.isInSeparatePage) {
+      this.products = this.productsService.products;
+    } else {
+      this.productsService.loadPopularProducts().subscribe((res: any) => {
+        this.products = res.popularProducts;
+      });
+    }
+    this.filters = [
       {
         name: 'Artists',
         description: 'artists',
@@ -92,6 +107,12 @@ export class ProductsComponent implements OnInit {
           {
             name: 'Alfred Hansl',
             description: 'alfredHansl',
+            value: '',
+            id: 2
+          },
+          {
+            name: 'Pablo Picasso',
+            description: 'pabloPicasso',
             value: '',
             id: 2
           }
@@ -117,12 +138,6 @@ export class ProductsComponent implements OnInit {
         ]
       }
     ];
-  }
-
-  getProducts() {
-    return this.productsService.loadProducts().subscribe((products: any[]) => {
-      this.products = products;
-    });
   }
 
   addToCart(product: any) {

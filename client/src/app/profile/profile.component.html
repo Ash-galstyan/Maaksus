@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-8">
-        <h1>Hello {{details?.name}}</h1>
-        <h4>{{details?.email}}</h4>
+        <h4>Hello {{details?.name}}</h4>
+        <h5>{{details?.email}}</h5>
       </div>
       <div class="col-12 col-md-4">
         <ul class="profile-sections-wrapper">
@@ -11,6 +11,27 @@
           <li class="profile-section"><a href="">Order History</a></li>
           <li class="profile-section"><a [routerLink]="['/favorites']">Favorite Items</a></li>
         </ul>
+      </div>
+      <div class="col-12">
+        <h2>Recommended Products</h2>
+        <div class="row">
+          <div *ngFor="let product of products" class="col-12 col-md-4 text-center">
+            <div class="product">
+              <div class="product-grid" [ngStyle]="{ 'background-image': 'url(' + product.img + ')', height: '250px'}">
+                <div class="inner">
+                  <a class="product-icon-wrapper" (click)="goToProductDetailPage(product, $event)" href="javascript:void(0)">
+                    <a class="icon" (click)="addToCart(product)"><fa-icon [icon]="faShoppingCart" href="javascript:void(0)"></fa-icon></a>
+                    <a (click)="openProductQuickViewModal(product)" class="icon"><fa-icon [icon]="faEye" href="javascript:void(0)"></fa-icon></a>
+                  </a>
+                </div>
+              </div>
+              <div class="desc">
+                <h3><a href="single.html">{{product.productName}}</a></h3>
+                <span class="price">{{product.price}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

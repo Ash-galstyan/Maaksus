@@ -1,13 +1,17 @@
-require('./api/models/db');
-require('./api/config/passport');
-require('dotenv').config();
-
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const express = require('express');
 const logger = require('morgan');
 const passport = require('passport');
 const path = require('path');
+
+require('./api/models/db');
+require('./api/models/product-model');
+require('./api/models/testimonies-model');
+require('./api/models/main-carousel-model');
+require('./api/models/users');
+require('./api/config/passport');
+require('dotenv').config();
 
 const routesApi = require('./api/routes/index');
 
@@ -21,7 +25,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 app.use("/api", routesApi);

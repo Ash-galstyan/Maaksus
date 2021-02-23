@@ -17,8 +17,8 @@ export class TestimonyComponent implements OnInit {
   constructor(private renderer: Renderer2, private testimoniesService: TestimoniesService) { }
 
   ngOnInit() {
-    this.testimoniesService.loadTestimonies().subscribe((testimonies: any) => {
-      this.testimonies = testimonies;
+    this.testimoniesService.loadTestimonies().subscribe((res: any) => {
+      this.testimonies = res.data[0].testimonies;
     });
   }
 

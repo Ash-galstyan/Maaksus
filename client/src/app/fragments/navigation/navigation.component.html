@@ -1,7 +1,7 @@
 <!--<div class="fh5co-loader"></div>-->
 <nav ngxNavbarDynamicExpand class="fh5co-nav fixed-top" role="navigation">
   <div class="container navbar-container">
-    <a class="navbar-brand" href="#"><div id="fh5co-logo"><a href="index.html">
+    <a class="navbar-brand" href="#"><div id="fh5co-logo"><a routerLink="/">
       <img src="../../../assets/images/maaksus_logo_and.png" alt="logo"></a></div>
     </a>
 
@@ -109,7 +109,7 @@
 
 <aside class="login-section-wrapper pl-4 pt-4 pr-4" [ngClass]="isLoginSectionVisible ? 'show' : 'hide'">
   <span aria-hidden="true" (click)="toggleSection()" class="close">&times;</span>
-  <h5>My Account</h5>
+  <a [routerLink]="'/profile'"><h5>My Account</h5></a>
   <ul class="login-sections mt-4 pl-0" *ngIf="!authService.isLoggedIn()">
     <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: false }" (click)="toggleSection()">Sign In</a></li>
     <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: true }" (click)="toggleSection()">Create Account</a></li>

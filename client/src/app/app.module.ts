@@ -40,6 +40,7 @@ import { QuickViewProductComponent } from './products/quick-view-product/quick-v
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FavoritesComponent } from './fragments/favorites/favorites.component';
+import { ProductsResolver } from './core/resolvers/products.resolver';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -98,7 +99,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     {
       provide: SWIPER_CONFIG,
       useValue: DEFAULT_SWIPER_CONFIG
-    }
+    },
+    ProductsResolver
   ],
   bootstrap: [AppComponent],
   entryComponents: [QuickViewProductComponent]

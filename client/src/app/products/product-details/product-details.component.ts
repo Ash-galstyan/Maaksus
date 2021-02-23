@@ -45,7 +45,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   get getProductDetails() {
-    return this.activatedRoute.snapshot.data.products.filter(product => {
+    return this.activatedRoute.snapshot.data.products.data[0].products.filter(product => {
       return product.id === +this.productId;
     });
   }
