@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { CartComponent } from '../../core/components/cart/cart.component';
 import { CartService } from '../../core/services/cart.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -15,6 +15,8 @@ import { AuthenticationService } from '../../core/services/authentication.servic
 })
 export class NavigationComponent implements OnInit, OnDestroy {
   faShoppingCart = faShoppingCart;
+  faBars = faBars;
+  faSearch = faSearch;
   bsModalRef: BsModalRef;
   isLoginSectionVisible = false;
 
