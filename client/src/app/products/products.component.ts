@@ -73,6 +73,7 @@ export class ProductsComponent implements OnInit {
   categoriesModel: Category = {};
   page = 1;
   bsModalRef: BsModalRef;
+  isFilterSectionVisible = false;
 
   constructor(
     private productsService: ProductsService,
@@ -80,7 +81,8 @@ export class ProductsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
     private modalService: BsModalService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private elRef: ElementRef
   ) { }
 
   ngOnInit() {
@@ -178,5 +180,11 @@ export class ProductsComponent implements OnInit {
         this.productsComponentIsInView = true;
       }
     }
+  }
+
+  toggleSection() {
+    this.isFilterSectionVisible = !this.isFilterSectionVisible;
+    this.isFilterSectionVisible ? this.elRef.nativeElement.ownerDocument.body.style.overflow = 'hidden' :
+      this.elRef.nativeElement.ownerDocument.body.style.overflow = null;
   }
 }

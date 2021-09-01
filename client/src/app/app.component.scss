@@ -1,6 +1,31 @@
+$screen-sm: 768px !default;
+
 ::ng-deep {
+  .overflow {
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(255,255,255,.7);
+    visibility: hidden;
+    opacity: 0;
+    left: -100%;
+    transition: 0.2s linear;
+  }
+
+  .overflow.show {
+    opacity: 1;
+    visibility: visible;
+    left: 0;
+    transition: 0.1s linear;
+  }
+
   .pages-wrapper {
     padding-top: 119px;
+    @media screen and (max-width: $screen-sm) {
+      padding-top: 0;
+    }
   }
 
   .swiper-button-next {

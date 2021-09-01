@@ -9,14 +9,33 @@
         </div>
       </div>
 
+      <aside class="filters-wrapper d-block d-md-none" [ngClass]="isFilterSectionVisible ? 'show' : 'hide'">
+        <span aria-hidden="true" (click)="toggleSection()" class="close">&times;</span>
+        <h4 class="mt-2 ml-2">Filters</h4>
+
+        <div class="container">
+          <div *ngFor="let filter of filters">
+            <h5>{{filter.name}}</h5>
+            <div *ngFor="let field of filter.fields">
+              <label class="filter-name">{{field.name}}
+                <input type="checkbox" [(ngModel)]="field.value">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="overflow" [ngClass]="isFilterSectionVisible ? 'show' : 'hide'" (click)="toggleSection()"></div>
+
       <div class="container">
         <div class="row">
-          <div class="col-2" *ngIf="isInSeparatePage">
+          <div class="col-2 d-none d-md-block" *ngIf="isInSeparatePage">
             <h4>Filters</h4>
             <div *ngFor="let filter of filters">
               <h5>{{filter.name}}</h5>
               <div *ngFor="let field of filter.fields">
-                <label class="container">{{field.name}}
+                <label class="filter-name">{{field.name}}
                   <input type="checkbox" [(ngModel)]="field.value">
                   <span class="checkmark"></span>
                 </label>
@@ -24,10 +43,10 @@
             </div>
           </div>
 
-          <div [ngClass]="isInSeparatePage ? 'col-10' : 'col-12'">
+          <div [ngClass]="isInSeparatePage ? 'col-12 col-md-10' : 'col-12'">
             <div class="row" [@scrollAnimation]="products.length" *ngIf="productsComponentIsInView">
 
-              <div class="col-12 mb-4 text-right" *ngIf="isInSeparatePage">
+              <div class="col-12 mb-4 text-right d-flex justify-content-between" *ngIf="isInSeparatePage">
                 <!--              // TODO this depends on the API, will have to wait for the data structure, may be best using ng-select-->
                 <!--              <ng-select-->
                 <!--                [items]="sortingOptions"-->
@@ -41,6 +60,8 @@
                 <!--              </ng-select>-->
 
                 <!--              // TODO default select works ok, only problem is option hover color and overall styling, need to use some pseudo constructs if left with this-->
+                <button class="btn btn-secondary d-inline-block d-md-none toggle-filters m-0" (click)="toggleSection()">Filters</button>
+
                 <label for="cat"></label>
                 <select id="cat" class="custom-select categories-select" [(ngModel)]="sortedOption">
                   <option *ngFor="let option of sortingOptions" [ngValue]="option.value">{{option.label}}</option>

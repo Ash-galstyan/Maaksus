@@ -1,8 +1,9 @@
 <!--<div class="fh5co-loader"></div>-->
-<nav ngxNavbarDynamicExpand class="fh5co-nav fixed-top" role="navigation">
+<nav class="navbar navbar-expand-lg fh5co-nav" role="navigation">
   <div class="container navbar-container">
-    <a class="navbar-brand" href="#"><div id="fh5co-logo"><a routerLink="/">
-      <img src="../../../assets/images/maaksus_logo_and.png" alt="logo"></a></div>
+    <a class="navbar-brand" href="#">
+      <div id="fh5co-logo"><a routerLink="/">
+        <img src="../../../assets/images/maaksus_logo_and.png" alt="logo"></a></div>
     </a>
 
     <button
@@ -11,21 +12,31 @@
       (click)="collapse.toggle()"
       aria-controls="main-nav"
       aria-expanded="false"
-      aria-label="Navigáció kapcsoló"
+      aria-label="Toggle Navigation"
     >
-    <span
-      class="navbar-toggler-icon d-flex align-items-center justify-content-center"
-    >
+    <span class="navbar-toggler-icon d-flex align-items-center justify-content-center">
+      <fa-icon [icon]="faBars" class="fa-icon"></fa-icon>
     </span>
     </button>
 
-    <ngx-navbar-collapse id="main-nav" #collapse="ngxNavbarCollapse" >
+    <div class="user-icon-wrapper mobile d-block d-md-none" (click)="toggleSection()">
+      <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
+           xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+      </svg>
+    </div>
+
+    <ngx-navbar-collapse id="main-nav" #collapse="ngxNavbarCollapse" class="container">
 
       <div class="navbar-nav row">
-        <ul class="menu-1 col-9 d-flex justify-content-center">
-          <li class="has-dropdown nav-item products-wrapper" dropdown triggers="hover" #dp="bs-dropdown" (mouseleave)="dp.hide()">
+        <ul class="menu-1 col-md-9 col-12 d-flex justify-content-center flex-column flex-md-row">
+          <li class="has-dropdown nav-item products-wrapper" dropdown triggers="hover" #dp="bs-dropdown"
+              (mouseleave)="dp.hide()">
             <a [routerLink]="['/products']" class="nav-link dropdown-toggle" id="button-animated" dropdownToggle
-            aria-controls="dropdown-animated">Art Prints</a>
+               aria-controls="dropdown-animated">Art Prints</a>
             <div class="dropdown-menu" id="dropdown-animated" *dropdownMenu
                  aria-labelledby="button-animated" role="menu">
               <div class="d-flex justify-content-start">
@@ -67,7 +78,8 @@
           <li class="has-dropdown nav-item" dropdown triggers="hover" #dps="bs-dropdown" (mouseleave)="dps.hide()">
             <a [routerLink]="['/services-page']" class="nav-link dropdown-toggle" id="servicesDropdown" dropdownToggle
                aria-controls="services-dropdown-animated">Services</a>
-            <ul id="services-dropdown-animated" class="dropdown-menu" role="menu" aria-labelledby="servicesDropdown" *dropdownMenu>
+            <ul id="services-dropdown-animated" class="dropdown-menu" role="menu" aria-labelledby="servicesDropdown"
+                *dropdownMenu>
               <li role="menuitem" class="dropdown-item"><a href="#">Free Delivery</a></li>
               <li role="menuitem" class="dropdown-item"><a href="#">Design</a></li>
             </ul>
@@ -75,13 +87,11 @@
           <li class="nav-item"><a [routerLink]="['/contact']" class="nav-link">Contact</a></li>
         </ul>
 
-        <ul class="menu-2 col-3 d-flex justify-content-between align-items-center">
+        <ul class="pl-2 pr-2 p-md-0 menu-2 col-md-3 col-12 d-flex justify-content-between align-items-center">
           <li class="search nav-item">
             <div class="input-group">
               <input type="text" placeholder="Search..">
-              <span class="input-group-btn">
-              <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
-            </span>
+              <button class="btn btn-primary" type="button"><fa-icon [icon]="faSearch" class="fa-icon"></fa-icon></button>
             </div>
           </li>
           <li class="shopping-cart nav-item"><a href="javascript:void(0)" class="cart" (click)="openCartModal()">
@@ -91,17 +101,20 @@
           </li>
         </ul>
 
-        <div class="profile-link" *ngIf="authService.isLoggedIn()">
-          <a routerLink="/profile">Welcome {{ authService.getUserDetails()?.name }}!</a>
-        </div>
+      </div>
 
-        <div class="user-icon-wrapper" (click)="toggleSection()">
-          <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
-            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
-          </svg>
-        </div>
+      <div class="profile-link" *ngIf="authService.isLoggedIn()">
+        <a routerLink="/profile">Welcome {{ authService.getUserDetails()?.name }}!</a>
+      </div>
+
+      <div class="user-icon-wrapper d-none d-md-block" (click)="toggleSection()">
+        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
+             xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+          <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+        </svg>
       </div>
     </ngx-navbar-collapse>
   </div>
@@ -111,8 +124,10 @@
   <span aria-hidden="true" (click)="toggleSection()" class="close">&times;</span>
   <a [routerLink]="'/profile'"><h5>My Account</h5></a>
   <ul class="login-sections mt-4 pl-0" *ngIf="!authService.isLoggedIn()">
-    <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: false }" (click)="toggleSection()">Sign In</a></li>
-    <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: true }" (click)="toggleSection()">Create Account</a></li>
+    <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: false }"
+                                 (click)="toggleSection()">Sign In</a></li>
+    <li class="login-section"><a [routerLink]="'/account'" [queryParams]="{ isNewAccount: true }"
+                                 (click)="toggleSection()">Create Account</a></li>
   </ul>
   <ul class="login-sections mt-4 pl-0">
     <li class="login-section" *ngIf="authService.isLoggedIn()"><a>My Favorites</a></li>

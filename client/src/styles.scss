@@ -179,6 +179,9 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav {
   padding: 18px 0;
   background: $brand-white;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
   @media screen and (max-width: $screen-sm) {
     padding: 20px 0;
   }
@@ -195,27 +198,25 @@ h1, h2, h3, h4, h5, h6, figure {
     }
   }
   .navbar-nav {
-    width: 100%;
+    @media screen and (min-width: $screen-md) {
+      width: 100%;
+    }
   }
   a.nat-item {
     padding: 5px 10px;
     color: $brand-black;
   }
-  //.menu-1, .menu-2 {
-  //  @media screen and (max-width: $screen-sm ) {
-  //    display: none;
-  //  }
-  //}
   .menu-2{
-    li{
+    li {
       &.search{
-        float: left;
         width: 83%;
         font-family: $font-secondary;
         @include transition(.3s);
         padding: 0;
         margin: -5px 0 0 0;
-
+        .input-group {
+          flex-wrap: nowrap;
+        }
       }
       input[type=text]{
         padding: 6px 10px;
@@ -237,6 +238,7 @@ h1, h2, h3, h4, h5, h6, figure {
         padding: 5px;
         background: transparent;
         border: none;
+        color: $brand-primary;
         i{
           color: rgba($brand-black,.5);
         }
@@ -265,6 +267,10 @@ h1, h2, h3, h4, h5, h6, figure {
               background: $brand-primary;
               color: rgba(255,255,255,1);
               @include border-radius(50%);
+              @media screen and (max-width: $screen-sm) {
+                top: -22px;
+                right: 12px;
+              }
             }
           }
         }
@@ -283,6 +289,7 @@ h1, h2, h3, h4, h5, h6, figure {
         font-size: 13px;
         padding: 20px 10px;
         text-transform: uppercase;
+        display: inline-block;
         color: rgba(0,0,0,.5);
         @include transition(.5s);
         &:hover,&:focus, &:active {
@@ -471,7 +478,7 @@ h1, h2, h3, h4, h5, h6, figure {
   }
   @media screen and (max-width: $screen-sm) {
     height: inherit;
-    padding: 7em 0;
+    padding: 4em 0;
     .display-t,
     .display-tc {
       height: inherit;
@@ -704,6 +711,9 @@ form {
     color: $brand-black;
     font-weight: 100;
     display: block;
+    @media screen and (max-width: $screen-sm){
+      font-size: 20px;
+    }
   }
   .counter-label {
     margin-bottom: 0;
@@ -717,7 +727,8 @@ form {
     padding: 40px 20px;
     background: rgba($brand-white,.8);
     @media screen and (max-width: $screen-sm) {
-      margin-bottom: 50px;
+      margin-bottom: 30px;
+      height: 200px;
     }
   }
   .icon {
@@ -729,6 +740,11 @@ form {
     -moz-box-shadow: 0px 14px 30px -15px rgba(0,0,0,0.75);
     box-shadow: 0px 14px 30px -15px rgba(0,0,0,0.75);
     margin-bottom: 20px;
+    @media screen and (max-width: $screen-sm) {
+      width: 40px;
+      height: auto;
+      margin:  0 auto;
+    }
     i {
       height: 70px;
       color: $brand-white;
@@ -778,7 +794,7 @@ form {
   width: 100%;
   margin-bottom: 40px;
   @media screen and (max-width: $screen-sm) {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
 
   .desc{
@@ -792,6 +808,11 @@ form {
     display: table;
     text-align: center;
     margin: 0 auto 30px auto;
+    @media screen and (max-width: $screen-sm) {
+      width: 40px;
+      height: auto;
+      margin-bottom: 15px;
+    }
     @include border-radius(50%);
     .fa-icon {
       display: table-cell;
@@ -800,10 +821,17 @@ form {
       font-size: 40px;
       line-height: 40px;
       color: $brand-white;
+      @media screen and (max-width: $screen-sm) {
+        font-size: 20px;
+        height: auto;
+      }
     }
 
   }
   p, h3 {
+    @media screen and (max-width: $screen-sm) {
+      margin-bottom: 15px;
+    }
     margin-bottom: 30px;
   }
   h3 {
@@ -1127,6 +1155,9 @@ form {
     font-weight: 400;
     padding-left: 50px;
     padding-right: 50px;
+    @media screen and (max-width: $screen-sm) {
+      height: auto;
+    }
   }
   .form-inline {
     .form-group {
@@ -1621,6 +1652,10 @@ form {
     outline: none;
     box-shadow: none;
     border-color: $brand-primary;
+  }
+  @media screen and (max-width: $screen-sm) {
+    height: auto;
+    font-size: 15px;
   }
 }
 

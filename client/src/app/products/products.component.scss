@@ -1,3 +1,5 @@
+import
+
 .form-control.sorting-options {
   width: 150px;
   font-size: 14px;
@@ -16,7 +18,7 @@
 }
 
 /* The container */
-.container {
+.filter-name {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -28,7 +30,7 @@
 }
 
 /* Hide the browser's default checkbox */
-.container input {
+.filter-name input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -65,12 +67,12 @@
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.filter-name input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.filter-name .checkmark:after {
   left: 7px;
   top: 3px;
   width: 5px;
@@ -84,9 +86,6 @@
 
 .custom-select.categories-select {
   max-width: 180px;
-  border-top: 0;
-  border-right: 0;
-  border-left: 0;
   border-radius: 0;
   &:focus {
     border-color: #d1c286;
@@ -96,4 +95,39 @@
 
 :host::ng-deep .ngx-pagination .current {
   background: #d1c286;
+}
+
+.toggle-filters {
+  background-color: transparent;
+  color: inherit;
+  padding: 5px 20px;
+  border-color: #ced4da;
+}
+
+.filters-wrapper {
+  left: -90%;
+  width: 60%;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #fff;
+  height: 100%;
+  padding-bottom: 2em;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s linear;
+}
+
+.filters-wrapper.show {
+  left: 0;
+  top: 0;
+  z-index: 10000;
+  visibility: visible;
+  opacity: 1;
+  -webkit-box-shadow: -2px 0 10px 0 rgba(0,0,0,.3);
+  -moz-box-shadow: -2px 0 10px 0 rgba(0,0,0,.3);
+  box-shadow: -2px 0 10px 0 rgba(0,0,0,.3);
+  .close {
+    font-size: 3rem;
+  }
 }

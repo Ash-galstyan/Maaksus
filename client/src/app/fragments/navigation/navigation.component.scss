@@ -1,5 +1,6 @@
 .navbar-toggler-icon {
   background-color: #d1c286;
+  color: #828282;
 }
 
 .profile-link {
@@ -24,6 +25,10 @@
   right: 25px;
   top: 15px;
   cursor: pointer;
+  &.mobile {
+    right: 70px;
+    top: 50px;
+  }
 }
 
 .login-section-wrapper {
@@ -70,24 +75,4 @@
   .close {
     font-size: 3rem;
   }
-}
-
-.overflow {
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  background: rgba(255,255,255,.7);
-  visibility: hidden;
-  opacity: 0;
-  left: -100%;
-  transition: 0.2s linear;
-}
-
-.overflow.show {
-  opacity: 1;
-  visibility: visible;
-  left: 0;
-  transition: 0.1s linear;
 }
